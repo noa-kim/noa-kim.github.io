@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noa Kim — Portfolio</title>
+  <meta name="description" content="Noa Kim — informatics design lead, UX researcher, published health informaticist, and MSW candidate at University of Michigan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Custom Properties ──────────────────────────────────────── */
+    :root {
+      --ot-100: #0c0f20;
+      --ot-200: #181d40;
+      --ot-300: #242c60;
+      --ot-400: #2f3a80;
+      --ot-main: #3c4aa1;
+      --ot-600: #5563c0;
+      --ot-700: #808ad0;
+      --ot-800: #aab1e0;
+      --ot-900: #d5d8ef;
+      --vc-main: #f2f3ae;
+      --vc-900: #fcfdef;
+      --dg-300: #484136;
+      --dg-main: #776d5a;
+      --dg-800: #cbc5ba;
+      --dg-900: #e5e2dd;
+      --fo-main: #ff4e00;
+      --fo-600: #ff7033;
+      --fo-900: #ffdbcc;
+      --garnet: #710000;
+      --font-serif: 'DM Serif Display', 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-mono: 'DM Mono', 'Courier New', monospace;
+      --max-w: 1100px;
+      --nav-h: 64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--dg-300);
+      background: #fff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      font-weight: 400;
+    }
+
+    .section-rule {
+      width: 40px;
+      height: 3px;
+      background: var(--fo-main);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── Nav ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--ot-200);
+      border-bottom: 1px solid var(--ot-300);
+      display: flex;
+      align-items: center;
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--vc-main);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .nav-brand:hover { color: #fff; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 3vw, 2rem);
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--ot-800);
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--fo-main);
+      transition: width 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--fo-main); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── Hero ───────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      background: var(--ot-100);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: var(--nav-h);
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 420px; height: 420px;
+      border: 2px solid var(--ot-300);
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: spin-slow 40s linear infinite;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 60px; right: 60px;
+      width: 180px; height: 180px;
+      background: var(--ot-300);
+      opacity: 0.35;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-geo-rect {
+      position: absolute;
+      bottom: 80px; right: 120px;
+      width: 90px; height: 14px;
+      background: var(--fo-main);
+      opacity: 0.7;
+    }
+
+    .hero-geo-dot {
+      position: absolute;
+      bottom: 110px; right: 230px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--vc-main);
+      opacity: 0.6;
+    }
+
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(3deg); }
+    }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding-block: clamp(4rem, 10vh, 8rem);
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fo-600);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fade-up 0.7s ease forwards 0.2s;
+    }
+
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      line-height: 0.95;
+      color: #fff;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fade-up 0.7s ease forwards 0.4s;
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+      font-weight: 300;
+      color: var(--vc-main);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fade-up 0.7s ease forwards 0.6s;
+    }
+
+    .hero-bio {
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      color: var(--ot-800);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fade-up 0.7s ease forwards 0.8s;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--fo-main);
+      color: #fff;
+      opacity: 0;
+      animation: fade-up 0.7s ease forwards 1s;
+    }
+    .btn-primary:hover {
+      background: var(--fo-600);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 78, 0, 0.35);
+    }
+
+    /* ─── About ──────────────────────────────────────────────── */
+    #about {
+      background: var(--vc-900);
+      padding-block: clamp(4rem, 8vw, 7rem);
+    }
+
+    #about .section-label { color: var(--dg-main); }
+    #about .section-heading { color: var(--ot-200); margin-bottom: 2.5rem; }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (min-width: 768px) {
+      .about-layout { grid-template-columns: 1fr 300px; gap: 3rem; }
+    }
+
+    .about-body p {
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      color: var(--dg-300);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+
+    .about-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .info-box {
+      background: var(--ot-900);
+      border: 1.5px solid var(--ot-700);
+      border-radius: 6px;
+      padding: 1.4rem 1.6rem;
+      position: relative;
+    }
+
+    .info-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--ot-main);
+      border-radius: 6px 0 0 6px;
+    }
+
+    .info-box .box-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ot-main);
+      font-weight: 500;
+      margin-bottom: 0.65rem;
+    }
+
+    .info-box p {
+      font-size: 0.88rem;
+      color: var(--ot-200);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+    .info-box p:last-child { margin-bottom: 0; }
+
+    .info-box strong {
+      display: block;
+      font-weight: 600;
+      color: var(--ot-300);
+      margin-bottom: 0.2rem;
+    }
+
+    .info-box-orange::before { background: var(--fo-main); }
+    .info-box-orange .box-label { color: var(--fo-main); }
+
+    /* ─── Expertise ──────────────────────────────────────────── */
+    #expertise {
+      background: #fff;
+      padding-block: clamp(4rem, 8vw, 7rem);
+    }
+
+    #expertise .section-label { color: var(--fo-main); }
+    #expertise .section-heading { color: var(--ot-200); margin-bottom: 2.5rem; }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 600px) { .expertise-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .expertise-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .expertise-card {
+      background: var(--ot-900);
+      border: 1px solid var(--ot-800);
+      border-left: 4px solid var(--ot-main);
+      border-radius: 4px;
+      padding: 1.5rem 1.75rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .expertise-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(60, 74, 161, 0.12);
+    }
+
+    .expertise-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--ot-300);
+      margin-bottom: 0.6rem;
+    }
+
+    .expertise-card p {
+      font-size: 0.88rem;
+      color: var(--dg-main);
+      line-height: 1.6;
+    }
+
+    /* ─── Projects ───────────────────────────────────────────── */
+    #projects {
+      background: var(--dg-900);
+      padding-block: clamp(4rem, 8vw, 7rem);
+    }
+
+    #projects .section-label { color: var(--dg-main); }
+    #projects .section-heading { color: var(--ot-200); margin-bottom: 2.5rem; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 640px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .project-card {
+      background: #fff;
+      border-radius: 6px;
+      border-top: 4px solid var(--fo-main);
+      box-shadow: 0 2px 12px rgba(72, 65, 54, 0.08);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(72, 65, 54, 0.14);
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--ot-900);
+      color: var(--ot-300);
+      padding: 0.2rem 0.6rem;
+      border-radius: 99px;
+      align-self: flex-start;
+    }
+
+    .project-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--ot-200);
+      line-height: 1.25;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--dg-main);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .project-meta {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--dg-800);
+      letter-spacing: 0.05em;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--fo-main);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+      transition: color 0.2s;
+    }
+    .project-link::after { content: '→'; transition: transform 0.2s; }
+    .project-link:hover { color: var(--fo-600); }
+    .project-link:hover::after { transform: translateX(4px); }
+
+    /* ─── Publications ───────────────────────────────────────── */
+    #publications {
+      background: var(--ot-200);
+      padding-block: clamp(4rem, 8vw, 7rem);
+    }
+
+    #publications .section-label { color: var(--ot-700); }
+    #publications .section-heading { color: var(--vc-main); margin-bottom: 2.5rem; }
+
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .pub-item {
+      border-left: 3px solid var(--ot-400);
+      padding: 1rem 1.25rem;
+      background: rgba(255,255,255,0.04);
+      border-radius: 0 4px 4px 0;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .pub-item:hover {
+      border-color: var(--fo-main);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .pub-item p {
+      font-size: 0.9rem;
+      color: var(--ot-800);
+      line-height: 1.6;
+    }
+
+    .pub-item .pub-journal {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--ot-600);
+      margin-bottom: 0.35rem;
+    }
+
+    .pub-item a {
+      color: var(--fo-600);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-size: 0.8rem;
+    }
+    .pub-item a:hover { color: var(--fo-main); }
+
+    .pub-item strong { color: var(--vc-main); font-weight: 600; }
+
+    .pub-note {
+      margin-top: 1.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ot-600);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── Contact ────────────────────────────────────────────── */
+    #contact {
+      background: var(--ot-100);
+      padding-block: clamp(4rem, 8vw, 6rem);
+    }
+
+    #contact .section-label { color: var(--ot-700); margin-bottom: 0.5rem; }
+
+    .contact-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      color: var(--vc-main);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--ot-800);
+      transition: color 0.2s;
+      border-bottom: 1px solid var(--ot-400);
+      padding-bottom: 2px;
+    }
+    .contact-link:hover { color: var(--fo-main); border-bottom-color: var(--fo-main); }
+
+    .contact-close {
+      font-size: 0.95rem;
+      color: var(--ot-600);
+      font-style: italic;
+      font-family: var(--font-serif);
+    }
+
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--ot-300);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .footer-bottom span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--ot-600);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── Accessibility & scroll ─────────────────────────────── */
+    :focus-visible { outline: 2px solid var(--fo-main); outline-offset: 3px; }
+    section[id] { scroll-margin-top: var(--nav-h); }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ──────────────────────────────────────────────── -->
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="container">
+        <a href="#hero" class="nav-brand" aria-label="Noa Kim — go to top">Noa Kim</a>
+        <ul class="nav-links" role="list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#expertise">Expertise</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ─────────────────────────────────────────────── -->
+    <section id="hero" aria-labelledby="hero-name">
+      <div class="hero-geo-rect" aria-hidden="true"></div>
+      <div class="hero-geo-dot" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-inner">
+          <p class="hero-eyebrow" aria-hidden="true">Health Informatics · Human-Centered Design · Social Work</p>
+          <h1 class="hero-name" id="hero-name">Noa Kim</h1>
+          <p class="hero-tagline">Informatics Design Lead &thinsp;·&thinsp; Published Researcher &thinsp;·&thinsp; MSW Candidate</p>
+          <p class="hero-bio">
+            I spent nearly 20 years building technology systems in health care, libraries, and design.
+            Now I'm studying social work to help people heal from them.
+          </p>
+          <a href="#projects" class="btn btn-primary">View my work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── About ─────────────────────────────────────────────── -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <p class="section-label">Background</p>
+        <div class="section-rule" aria-hidden="true"></div>
+        <h2 class="section-heading" id="about-heading">About</h2>
+        <div class="about-layout">
+          <div class="about-body">
+            <p>
+              Coming Soon
+            </p>
+          </div>
+          <aside class="about-sidebar" aria-label="Current roles and education">
+            <div class="info-box">
+              <p class="box-label">Currently</p>
+              <p>
+                <strong>Master's of Social Work Candidate, University of Michigan School of Social Work</strong>
+                Expected May 2028. Interpersonal Practice pathway. Interest in humane AI and human-centered AI policy &amp; and addressing moral injury through collective power in in healthcare and tech fields.
+              </p>
+              <p>
+                <strong>Informatics Design Lead</strong>
+                Senior Product and People Manager, Michigan Medicine Population Health CQIs. June 2021–present.
+              </p>
+            </div>
+            <div class="info-box info-box-orange">
+              <p class="box-label">Education</p>
+              <p>
+                <strong>MSW — University of Michigan</strong>
+                Expected 2028
+              </p>
+              <p>
+                <strong>MSI — University of Michigan</strong>
+                HCI &amp; LIS, 2016. 
+              </p>
+              <p>
+                <strong>BA — Beloit College</strong>
+                Sociology &amp; Health and Society.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Expertise ──────────────────────────────────────────── -->
+    <section id="expertise" aria-labelledby="expertise-heading">
+      <div class="container">
+        <p class="section-label">What I do</p>
+        <div class="section-rule" aria-hidden="true"></div>
+        <h2 class="section-heading" id="expertise-heading">Expertise</h2>
+        <div class="expertise-grid">
+
+          <article class="expertise-card">
+            <h3>Health Informatics</h3>
+            <p>Clinical decision support, EHR integration, prior authorization and DME coverage tools, KPI dashboards. Subject matter expert in insurance coverage navigation for type 2 diabetes care.</p>
+          </article>
+
+          <article class="expertise-card">
+            <h3>UX Research &amp; Design</h3>
+            <p>7,000+ hours of participatory design with patients, caregivers, and clinicians. Figma, prototyping, usability testing, accessibility. Led a UX team from 1 to 6 at Michigan Medicine.</p>
+          </article>
+
+          <article class="expertise-card">
+            <h3>Product Management</h3>
+            <p>Roadmaps, agile sprints, cross-functional teams, stakeholder reporting. Grew a digital products portfolio from 6 to nearly 90 tools in three years. Certified Scrum Master.</p>
+          </article>
+
+          <article class="expertise-card">
+            <h3>Research &amp; Scholarly Communication</h3>
+            <p>Peer-reviewed publications in <em>Annals of Family Medicine</em>, <em>BMJ</em>, <em>JMIR</em>, and more. Conference presenter at IHI, NAPCRG, ADA. Former Scholarly Communications Manager at <em>Annals of Family Medicine</em>.</p>
+          </article>
+
+          <article class="expertise-card">
+            <h3>Education &amp; Mentorship</h3>
+            <p>Information literacy instruction, digital skills workshops, curriculum design. Taught at UM Library, Kalamazoo Public Library, and community orgs. Currently training as a clinical social worker.</p>
+          </article>
+
+          <article class="expertise-card">
+            <h3>Mutual Aid</h3>
+            <p>School-based social services, case management, legal observation, community organizing. Block captain, school safety driver, Iowa City Bike Library instructor, and board trustee (ICPL, 2021–2023).</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Projects ───────────────────────────────────────────── -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <p class="section-label">Work</p>
+        <div class="section-rule" aria-hidden="true"></div>
+        <h2 class="section-heading" id="projects-heading">Selected Work</h2>
+        <div class="projects-grid">
+
+          <article class="project-card">
+            <span class="project-tag">Health IT · Product</span>
+            <h3>Coverage Checker</h3>
+            <p>
+              A web-based tool to navigate diabetes coverage and prior authorization, developed at Michigan Medicine. Grew from a single workflow into a suite supporting over 20 products across statewide quality improvement programs. Subject of a peer-reviewed publication in <em>Annals of Family Medicine</em>, 2025.
+            </p>
+            <p class="project-meta">Michigan Medicine · 2021–Present</p>
+            <a href="https://doi.org/10.1370/afm.240633" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Read Coverage Checker publication (opens in new tab)">Read publication</a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-tag">Social Work · Research</span>
+            <h3>"AI Psychosis" — Health Issue Brief</h3>
+            <p>
+              An editorial-style health brief examining AI's role in psychotic symptom formation. Designed as a zine for SW600 at U-M SSW — grounded in peer-reviewed literature, presented in a format that reaches audiences beyond the academy.
+            </p>
+            <p class="project-meta">U-M School of Social Work · SW600 · 2026</p>
+            <a href="../SW600/" class="project-link" aria-label="View the AI Psychosis health issue brief">View project</a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-tag">Design · UX</span>
+            <h3>This Portfolio</h3>
+            <p>
+            Thanks for visiting!
+            </p>
+            <p class="project-meta">Personal · 2025</p>
+            <a href="#hero" class="project-link" aria-label="You're already here">You're here</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Publications ───────────────────────────────────────── -->
+    <section id="publications" aria-labelledby="publications-heading">
+      <div class="container">
+        <p class="section-label">Research</p>
+        <div class="section-rule" aria-hidden="true"></div>
+        <h2 class="section-heading" id="publications-heading">Selected Publications</h2>
+        <div class="pub-list">
+
+          <div class="pub-item">
+            <p class="pub-journal">Annals of Family Medicine · 2025</p>
+            <p><strong>Kim N</strong>, Cardinal S, Gabison J, et al. Coverage Checker: a Web-Based tool to navigate diabetes coverage and prior authorization. <a href="https://doi.org/10.1370/afm.240633" target="_blank" rel="noopener">doi:10.1370/afm.240633</a></p>
+          </div>
+
+          <div class="pub-item">
+            <p class="pub-journal">BMC Health Services Research · 2024</p>
+            <p>Oshman L, Bhomia N, Diez HL, …<strong>Kim N</strong>, et al. The Michigan collaborative for type 2 diabetes (MCT2D): Development and implementation of a statewide collaborative quality initiative. <a href="https://doi.org/10.1186/s12913-024-11520-z" target="_blank" rel="noopener">doi:10.1186/s12913-024-11520-z</a></p>
+          </div>
+
+          <div class="pub-item">
+            <p class="pub-journal">British Medical Journal · 2020</p>
+            <p>Mahmoudi E, Kamdar N, <strong>Kim N</strong>, et al. Use of electronic medical records in development and validation of risk prediction models of hospital readmission: systematic review. <a href="https://doi.org/10.1136/bmj.m958" target="_blank" rel="noopener">doi:10.1136/bmj.m958</a></p>
+          </div>
+
+          <div class="pub-item">
+            <p class="pub-journal">JMIR Diabetes · 2020</p>
+            <p>Yost O, Dejonckheere M, … <strong>Kim N</strong>, et al. Continuous Glucose Monitoring With Low-Carbohydrate Diet Coaching in Adults With Prediabetes: Mixed Methods Pilot Study. <a href="https://doi.org/10.2196/21551" target="_blank" rel="noopener">doi:10.2196/21551</a></p>
+          </div>
+
+          <div class="pub-item">
+            <p class="pub-journal">The Journal of Pediatrics · 2020</p>
+            <p>Harbaugh CM, Vu JV, Dejonckheere M, <strong>Kim N</strong>, et al. Youth Perspectives of Prescription Pain Medication in the Opioid Crisis. <a href="https://doi.org/10.1016/j.jpeds.2020.02.003" target="_blank" rel="noopener">doi:10.1016/j.jpeds.2020.02.003</a></p>
+          </div>
+
+        </div>
+        <p class="pub-note">Selected from 11 peer-reviewed publications · Full list available on request</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Contact / Footer ──────────────────────────────────── -->
+  <footer id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <p class="section-label">Get in touch</p>
+      <h2 class="contact-heading" id="contact-heading">Let's connect</h2>
+      <nav class="contact-links" aria-label="Contact links">
+        <a href="mailto:hifromnoa@gmail.com" class="contact-link" aria-label="Email hifromnoa@gmail.com">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          hifromnoa@gmail.com
+        </a>
+        <a href="https://github.com/noa-kim" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Noa Kim on GitHub (opens in new tab)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          github.com/noa-kim
+        </a>
+      </nav>
+      <p class="contact-close">Open to collaboration, clinical consultation, and conversations about technology, equity, and care.</p>
+      <div class="footer-bottom">
+        <span>Noa Kim · 2025</span>
+        <span>Built by hand · No frameworks harmed</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
