@@ -490,6 +490,17 @@
     .project-link--secondary::after { content: '↗'; }
     .project-link--secondary:hover { color: var(--ot-main); }
 
+    .project-card--soon { border-top-color: var(--dg-800); box-shadow: none; border: 1px dashed var(--dg-800); border-top: 4px solid var(--dg-800); }
+    .project-card--soon:hover { transform: none; box-shadow: none; }
+    .project-soon {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dg-main);
+      margin-top: 0.25rem;
+    }
+
     /* ─── Publications ───────────────────────────────────────── */
     #publications {
       background: var(--ot-200);
@@ -776,14 +787,14 @@
             <a href="../SW600/" class="project-link" aria-label="View the AI Psychosis health issue brief">View project</a>
           </article>
 
-          <article class="project-card">
-            <span class="project-tag">Design · UX</span>
-            <h3>This Portfolio</h3>
+          <article class="project-card project-card--soon">
+            <span class="project-tag">Health IT · Case study</span>
+            <h3>[Second administrative burden project]</h3>
             <p>
-            Thanks for visiting!
+              [One or two sentences on the burden this project tackled and who it helped.]
             </p>
-            <p class="project-meta">Personal · 2025</p>
-            <a href="#hero" class="project-link" aria-label="You're already here">You're here</a>
+            <p class="project-meta">[Organization] · [Years]</p>
+            <span class="project-soon">Case study coming soon</span>
           </article>
 
         </div>
