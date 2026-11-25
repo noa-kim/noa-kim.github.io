@@ -28,9 +28,9 @@
   --fo-600: #ff7033;
   --fo-900: #ffdbcc;
   --garnet: #710000;
-  --font-serif: 'DM Serif Display', 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'DM Mono', 'Courier New', monospace;
+  --font-serif: 'damson', Georgia, serif;
+  --font-sans: 'atkinson-hyperlegible-next', system-ui, sans-serif;
+  --font-mono: 'keo', 'Courier New', monospace;
   --max-w: 1100px;
   --prose-w: 700px;
   --nav-h: 64px;
