@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Making Diabetes Coverage Navigable in Michigan — Case Study · Noa Kim</title>
+  <meta name="description" content="We partnered with Michigan primary care teams to turn prior authorization and coverage rules for diabetes medications and glucose monitors into a free tool any care team member can use in a few clicks." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/case-study.css" />
+  <!-- DRAFT REVIEW MARKERS: delete this block and every .todo / .guess span before publishing. -->
+  <style>
+    .todo { display:block; background:#fff4b8; border:1px dashed #c9a400; border-radius:4px; padding:.6rem .8rem; margin:1rem 0; color:#5a4a00; font-size:.9rem; font-weight:400; }
+    .todo::before { content:'NEEDS NOA · '; font-family:var(--font-mono, monospace); font-size:.7rem; letter-spacing:.08em; font-weight:500; }
+    .guess { background:#ffe8dc; border-bottom:1px dashed #ff4e00; }
+    .guess::after { content:' [check]'; font-family:var(--font-mono, monospace); font-size:.7em; color:#ff4e00; }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ── Nav ─────────────────────────────────────────────── -->
+  <header>
+    <nav class="cs-nav" aria-label="Main navigation">
+      <div class="container">
+        <a href="/" class="nav-brand">Noa Kim</a>
+        <a href="/#projects" class="nav-back">All work</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ── Hero ──────────────────────────────────────────── -->
+    <section class="cs-hero" aria-labelledby="cs-title">
+      <div class="container">
+        <p class="cs-tag">Success story · Health IT</p>
+        <h1 id="cs-title">Making Diabetes Coverage Navigable for Michigan Care Teams</h1>
+        <p class="cs-deck">We partnered with primary care practices across Michigan to turn a maze of prior authorization rules into Coverage Checker, a free tool that shows any care team member what a patient's plan covers and how to get it approved.</p>
+        <dl class="cs-meta">
+          <div><dt>Role</dt><dd>Informatics Design Lead · product, research &amp; design</dd></div>
+          <div><dt>Partner</dt><dd>Michigan Collaborative for Type 2 Diabetes, University of Michigan</dd></div>
+          <div><dt>Years</dt><dd>2021–present</dd></div>
+        </dl>
+      </div>
+      <div class="cs-hero-media">
+        <div class="container">
+          <img src="img/tool-home.jpg" alt="The Coverage Checker home page. Three large buttons read 'I want to prescribe a continuous glucose monitor', 'a GLP-1 RA / GIP', and 'an SGLT2i', each listing example products." width="1344" height="712" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Jump links ────────────────────────────────────── -->
+    <nav class="cs-jump" aria-label="On this page">
+      <div class="container">
+        <ol>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="#challenge">The challenge</a></li>
+          <li><a href="#approach">Our approach</a></li>
+          <li><a href="#outcomes">Outcomes</a></li>
+          <li><a href="#role">My role</a></li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ── Impact ────────────────────────────────────────── -->
+    <section class="cs-section cs-impact" id="impact" aria-labelledby="impact-h">
+      <div class="container">
+        <h2 id="impact-h">Impact</h2>
+        <ul class="cs-impact-list">
+          <li><strong>174,000+</strong>downloads and views by care teams since the first guide launched in 2021</li>
+          <li><strong>~75%</strong>of Michigan's largest commercial, Medicare, and Medicaid policies covered in one place</li>
+          <li><strong>1,403</strong>physicians in 395 practices, caring for nearly 189,000 people with type 2 diabetes, with access to the tool</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── The challenge ─────────────────────────────────── -->
+    <section class="cs-section" id="challenge" aria-labelledby="challenge-h">
+      <div class="container"><div class="prose-w">
+        <h2 id="challenge-h">The challenge</h2>
+        <p>Newer type 2 diabetes treatments, including GLP-1 receptor agonists, SGLT2 inhibitors, and continuous glucose monitors (CGMs), are now standard of care. Getting them to patients is another matter. Every insurance plan has its own preferred products, step therapy rules, and prior authorization criteria. A CGM might go through the pharmacy on one plan and a durable medical equipment (DME) supplier on another. The rules change every year, and sometimes every quarter.</p>
+        <p>That work lands on short-staffed clinical teams. Primary care clinicians describe feeling "tethered to the electronic health record." Staff spend hours uploading documentation, waiting on hold with plans, and standing by the fax machine. Some of the effort is futile from the start: when a plan excludes a whole drug class, no prior authorization will succeed, but teams often find out only after a denial.</p>
+        <p>When we asked practices in the Michigan Collaborative for Type 2 Diabetes (MCT2D) what stood in the way of prescribing these medications, <strong>83% named prior authorization or insurance coverage. Only 18% named prescribing knowledge.</strong> Clinicians knew what their patients needed. The paperwork was the barrier.</p>
+        <p class="cs-lede">How might we give every member of a care team a clear, current answer to "will this plan cover it, and what will it take?" at the moment they need it?</p>
+        <p>Payer formularies and medical policies were public but scattered across dozens of PDFs and portals, written for payers rather than clinics, and out of date almost as soon as they were saved. No single place put them together for Michigan practices.</p>
+        <span class="todo">Optional: one sentence from your own experience, such as a clinic visit or story where you saw this cost up close.</span>
+      </div></div>
+    </section>
+
+    <!-- ── Our approach ──────────────────────────────────── -->
+    <section class="cs-section" id="approach" aria-labelledby="approach-h">
+      <div class="container"><div class="prose-w">
+        <h2 id="approach-h">Our approach</h2>
+        <p>MCT2D is a statewide, all-payer quality improvement collaborative. Its coordinating center is small: about eight full-time staff, three of them human-centered designers and informaticists. <strong>We designed the right thing before designing the thing right</strong>, listening first to the practices and payers on both sides of every prior authorization.</p>
+        <ul class="cs-points">
+          <li><strong>Listen to the people doing the work.</strong> We analyzed nearly 1,000 physician-submitted case summaries and needs assessments, plus transcripts of meetings with practice teams. Prior authorization surfaced again and again, along with a request for an "easy button."</li>
+          <li><strong>Learn from every side of the transaction.</strong> We spent more than 30 hours in one-on-one calls with payers, public plan medical leads, and diabetes drug and device representatives to understand where coverage criteria live and how often they change.</li>
+          <li><strong>Make the problem playable.</strong> In "Coverage Quest," a game-style workshop exercise, practice teams mapped their coverage barriers and opportunities for improvement.</li>
+        </ul>
+
+        <blockquote class="cs-quote">
+          <p>"Digital algorithm for point of care use for providers: insurance class, preferred options, details needed for PA."</p>
+          <cite>— MCT2D practice participant, describing what they needed</cite>
+        </blockquote>
+
+        <figure class="cs-figure">
+          <img src="img/barriers-survey.jpg" alt="Slide titled 'What are practices' biggest barrier to prescribing SGLT2i's and GLP-1 RAs?' A balance scale tips heavily toward 'Prior authorization and/or insurance coverage, 83%, n=167' over 'Prescribing knowledge, 18%, n=36'." width="1600" height="900" loading="lazy" />
+          <figcaption>What practices told us. The barrier was rarely clinical knowledge; it was coverage and paperwork.</figcaption>
+        </figure>
+
+        <h3>Start with paper</h3>
+        <p>Before building software, we tested the idea with the cheapest thing that could work. In November 2021, MCT2D's clinical pharmacy lead and our design team published a coverage guide as a PDF on mct2d.org, shared it in the newsletter, and handed it out at collaborative meetings. <strong>It quickly ranked in the top 1.5% of the site's most-visited pages.</strong> Over the next three years it went through 90 versions, updated quarterly, and grew to include anti-obesity medications and patient assistance programs.</p>
+
+        <figure class="cs-figure">
+          <img src="img/coverage-guide-v1-to-v90.jpg" alt="Slide showing the MCT2D coverage guide, a color-coded table of medication coverage by Michigan payer, evolving from version 1 in November 2021 to version 90 in October 2024, beside a tall stack of paper." width="1600" height="900" loading="lazy" />
+          <figcaption>From version 1 to version 90. The paper guide proved the need and became the content model for the interactive tool.</figcaption>
+        </figure>
+
+        <h3>Then build the easy button, with clinicians</h3>
+        <p>In early 2024, a small group of MCT2D clinicians met with us four times in focus groups to co-design and test an interactive version. Between sessions, the design team ran agile design sprints and brought back prototypes for clinicians to try and critique. We launched a minimum viable product in May 2024. In a few clicks, a care team member picks what they want to prescribe and the patient's plan, and the tool returns:</p>
+        <ul class="cs-points">
+          <li><strong>Coverage at a glance.</strong> Preferred products, step therapy, and prior authorization criteria for that plan.</li>
+          <li><strong>A way around prior authorization, when one exists.</strong> The tool flags plans that verify eligibility automatically, so no PA is needed.</li>
+          <li><strong>Pharmacy or DME.</strong> It says where to send a CGM order and which DME suppliers to use.</li>
+          <li><strong>A warning before a futile request.</strong> When a plan excludes a drug class, the tool says so up front.</li>
+          <li><strong>Documentation, done.</strong> A dot phrase generator writes the chart note the plan requires, ready to paste into the EHR.</li>
+        </ul>
+
+        <figure class="cs-figure">
+          <img src="img/bypass-pa.jpg" alt="Coverage details screen. A green banner reads 'This patient may be eligible for CGM coverage under this insurance plan.' Below: 'Order CGM through the pharmacy,' a list of preferred devices, and an expanded 'Bypass Prior Authorization' note explaining insulin status is verified automatically." width="1210" height="744" loading="lazy" />
+          <figcaption>Coverage details tell the team where to order and whether a prior authorization can be skipped entirely.</figcaption>
+        </figure>
+
+        <figure class="cs-figure">
+          <img src="img/dme-suppliers.jpg" alt="Coverage details screen listing preferred DME suppliers, AdaptHealth, Advanced Diabetes Supply, Byram, and Edgepark Medical Supplies, with whether each is on Parachute Health and a phone number." width="1166" height="768" loading="lazy" />
+          <figcaption>When a CGM has to go through durable medical equipment, the tool names the preferred suppliers and how to reach them.</figcaption>
+        </figure>
+
+        <h3>Practices that made it work</h3>
+        <ul class="cs-points">
+          <li><strong>Start small and validate early.</strong> A PDF proved demand and taught us what content mattered before we wrote any code.</li>
+          <li><strong>Co-create, then deliver.</strong> Building with clinicians, and shipping what we promised, built trust that led to deeper engagement.</li>
+          <li><strong>Scope tightly and be transparent.</strong> Careful feature scoping and an open timeline let a small team ship a bespoke product quickly.</li>
+          <li><strong>Treat maintenance as the product.</strong> Quarterly reviews of formularies and medical policies, and regular meetings with payers, keep the answers right.</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <!-- ── Outcomes ──────────────────────────────────────── -->
+    <section class="cs-section" id="outcomes" aria-labelledby="outcomes-h">
+      <div class="container"><div class="prose-w">
+        <h2 id="outcomes-h">Outcomes</h2>
+        <p>Coverage Checker now covers <strong>roughly 75% of Michigan's largest commercial, Medicare, and Medicaid policies</strong>, and has been downloaded and viewed <strong>more than 174,000 times</strong>. In its first months online, care teams ran <strong>10,545 searches</strong> and spent twice as long on Coverage Checker as on the average page of the site. In a survey, <strong>100% of users said they would recommend it to a colleague</strong> <span class="guess">how many were surveyed?</span>. One practice called it "our bible."</p>
+        <p>A companion tool helps patients understand their own plan's medication and CGM coverage. Practices told us the patient tools "have saved office staff time," and that patients feel more able to take their care into their own hands.</p>
+        <p>The less visible outcome matters as much. Keeping the data current pushed us to build working relationships across the payer landscape, and <strong>regular collaboration with payers led to more accountability, improvements to coverage criteria, and streamlined approvals.</strong> The tool helps teams route around the burden, and it gave us standing to push on its source.</p>
+        <p>The work has limits. Coverage Checker includes the most common Michigan plans but not pharmacy carve-outs, and it can't fix drug shortages, high-deductible plans, or slow-moving DME ordering systems. Next, MCT2D planned a mobile "Coverage Checker Lite," broader plan coverage through a pharmacy benefit manager data partnership, crowdsourced data quality checks, and coverage tracking for diabetes prevention programs.</p>
+        <span class="todo">Did the mobile app ship, and when? Any newer numbers for searches, plans covered, time saved per PA, or fewer denials?</span>
+        <p>The work was peer reviewed in <em>Annals of Family Medicine</em> (2025) and presented at the IHI National Forum on Quality Improvement in Health Care (2024).</p>
+        <p class="cs-credit">This work was made possible by Blue Cross Blue Shield of Michigan's support of the Michigan Collaborative for Type 2 Diabetes, a statewide collaborative quality initiative.</p>
+      </div></div>
+    </section>
+
+    <!-- ── My role ───────────────────────────────────────── -->
+    <section class="cs-section" id="role" aria-labelledby="role-h">
+      <div class="container"><div class="prose-w">
+        <h2 id="role-h">My role</h2>
+        <aside class="cs-role">
+          <p>I joined MCT2D in 2021 as Informatics Design Lead, where I lead and manage the collaborative's design and informatics team. On Coverage Checker I owned the product from the first PDF through the interactive tool.</p>
+          <ul>
+            <li><span class="guess">Created the November 2021 coverage guide</span> with Heidi Diez, PharmD, MCT2D's co-director and clinical pharmacy lead.</li>
+            <li>Synthesized nearly 1,000 case summaries, needs assessments, and meeting transcripts into the case for an interactive tool.</li>
+            <li>Ran 30+ hours of one-on-one research calls with payers, public plan medical leads, and manufacturer representatives.</li>
+            <li><span class="guess">Led the clinician focus groups and design sprints</span> and scoped the features for the May 2024 launch.</li>
+            <li><span class="guess">Set up the quarterly formulary and medical policy review</span> that keeps the tool accurate.</li>
+            <li>Co-presented the work at the IHI National Forum and published it as first and corresponding author in <em>Annals of Family Medicine</em>.</li>
+          </ul>
+        </aside>
+        <p>I did this work with Larrea Young, MDes (design project manager), Julian Weisensel (multimedia designer), Ryan Carpus (senior web applications developer), and the clinicians, pharmacists, and quality improvement staff of MCT2D.</p>
+        <span class="todo">Please check the highlighted bullets. Were you the "informatics designer" who made the 2021 guide with Heidi? Did you or Larrea lead the focus groups and sprints? Add any decision of yours that changed the direction, and, if you like, a line connecting this work to your social work training.</span>
+
+        <h3>Further reading</h3>
+        <ul class="cs-refs">
+          <li><strong>Kim N</strong>, Cardinal S, Gabison J, Oshman L, Rau J, Reiss J, Young L, Diez HL. Coverage Checker: a web-based tool to navigate diabetes coverage and prior authorization. <em>Annals of Family Medicine</em>. 2025;23(4):378. <a href="https://doi.org/10.1370/afm.240633" target="_blank" rel="noopener">doi:10.1370/afm.240633</a></li>
+          <li><strong>Kim N</strong>, Young L. Coverage Checker: applying human-centered design to develop a tool for insurance coverage navigation. Session C17, IHI National Forum; December 10, 2024.</li>
+          <li>Oshman L, Bhomia N, Diez HL, … <strong>Kim N</strong>, et al. The Michigan Collaborative for Type 2 Diabetes (MCT2D): development and implementation of a statewide collaborative quality initiative. <em>BMC Health Services Research</em>. 2024. <a href="https://doi.org/10.1186/s12913-024-11520-z" target="_blank" rel="noopener">doi:10.1186/s12913-024-11520-z</a></li>
+          <li>Try the tool: <a href="https://www.mct2d.org/resource-library/mct2d-coverage-checker-1-0" target="_blank" rel="noopener">MCT2D Coverage Checker</a></li>
+        </ul>
+      </div></div>
+    </section>
+
+    <!-- ── Call to action ────────────────────────────────── -->
+    <section class="cs-cta" aria-labelledby="cta-h">
+      <div class="container">
+        <h2 id="cta-h">Working to cut administrative burden in health care?</h2>
+        <p>I'd love to hear what you're building, and where people are getting stuck.</p>
+        <div class="cs-cta-actions">
+          <a href="/#contact" class="btn">Get in touch</a>
+          <a href="/#projects" class="cs-cta-link">See more work</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="cs-footer">
+    <div class="container">
+      <span>Noa Kim · 2026</span>
+      <span>Built by hand · No frameworks harmed</span>
+    </div>
+  </footer>
+
+</body>
+</html>
