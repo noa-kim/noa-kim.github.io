@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+  CASE STUDY TEMPLATE
+  ───────────────────
+  1. Copy this file to  case-studies/<slug>/index.html  (e.g. case-studies/coverage-checker/index.html).
+     The page will live at  https://noa-kim.github.io/case-studies/<slug>/
+  2. Replace every [BRACKETED] placeholder. Delete any optional block you don't need
+     (stats, quote, figure, callout). Keep section ids matching the table of contents.
+  3. Images go in  case-studies/<slug>/img/  and are referenced as  img/filename.png
+  4. Add a card for it in the Selected Work section of /index.html (see the comment there).
+
+  This file starts with an underscore, so GitHub Pages does not publish it.
+  To preview locally, run  python3 -m http.server  from the repo root and open
+  http://localhost:8000/case-studies/_template.html
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Project name] — Case Study · Noa Kim</title>
+  <meta name="description" content="[One sentence: what was built, for whom, and what administrative burden it reduced.]" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/case-study.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ── Nav ─────────────────────────────────────────────── -->
+  <header>
+    <nav class="cs-nav" aria-label="Main navigation">
+      <div class="container">
+        <a href="/" class="nav-brand">Noa Kim</a>
+        <a href="/#projects" class="nav-back">All work</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ── Hero ────────────────────────────────────────────── -->
+    <section class="cs-hero" aria-labelledby="cs-title">
+      <div class="container">
+        <p class="cs-tag">Case Study · [Health IT · Product]</p>
+        <h1 id="cs-title">[Project name]</h1>
+        <p class="cs-summary">[One or two sentences: the problem, who it burdened, and what changed because of this work.]</p>
+        <dl class="cs-meta">
+          <div><dt>Role</dt><dd>[e.g. Product lead &amp; UX researcher]</dd></div>
+          <div><dt>Timeline</dt><dd>[e.g. 2021–present]</dd></div>
+          <div><dt>Team</dt><dd>[e.g. 6 designers, 2 engineers, clinical SMEs]</dd></div>
+          <div><dt>Setting</dt><dd>[e.g. Michigan Medicine · statewide CQI]</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ── At a glance ─────────────────────────────────────── -->
+    <section class="cs-glance" aria-label="At a glance">
+      <div class="container">
+        <div class="cs-glance-grid">
+          <article class="glance-card">
+            <h2>Problem</h2>
+            <p>[The administrative burden, in one or two plain sentences.]</p>
+          </article>
+          <article class="glance-card">
+            <h2>Approach</h2>
+            <p>[What you did: research, design, build, rollout.]</p>
+          </article>
+          <article class="glance-card">
+            <h2>Outcome</h2>
+            <p>[The headline result: time saved, adoption, access, publication.]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Body ────────────────────────────────────────────── -->
+    <div class="cs-body">
+      <div class="container cs-layout">
+
+        <!-- Table of contents (desktop only). Keep in sync with section ids below. -->
+        <nav class="cs-toc" aria-label="On this page">
+          <p>On this page</p>
+          <ol>
+            <li><a href="#context">Context</a></li>
+            <li><a href="#role">My role</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#design">Design &amp; build</a></li>
+            <li><a href="#outcomes">Outcomes</a></li>
+            <li><a href="#reflection">Reflection</a></li>
+            <li><a href="#references">References</a></li>
+          </ol>
+        </nav>
+
+        <article class="cs-content">
+
+          <section class="cs-section" id="context" aria-labelledby="context-h">
+            <p class="section-label">01 · Context</p>
+            <h2 id="context-h">[The burden, named plainly]</h2>
+            <p>[Who carried the burden: clinicians, staff, patients? What did the paperwork, phone calls, or workarounds cost them in time, money, or care?]</p>
+            <p>[Why it mattered now, and why existing tools didn't solve it.]</p>
+
+            <!-- OPTIONAL: big-number row. Delete if you don't have numbers. -->
+            <div class="cs-stats">
+              <div class="stat"><span class="stat-num">[00]</span><span class="stat-label">[what the number measures]</span></div>
+              <div class="stat"><span class="stat-num">[00%]</span><span class="stat-label">[what the number measures]</span></div>
+              <div class="stat"><span class="stat-num">[00 hrs]</span><span class="stat-label">[what the number measures]</span></div>
+            </div>
+          </section>
+
+          <section class="cs-section" id="role" aria-labelledby="role-h">
+            <p class="section-label">02 · My role</p>
+            <h2 id="role-h">[What I owned]</h2>
+            <p>[Your responsibilities and the decisions that were yours. Name collaborators and what they owned.]</p>
+            <ul>
+              <li>[Responsibility or decision]</li>
+              <li>[Responsibility or decision]</li>
+              <li>[Responsibility or decision]</li>
+            </ul>
+          </section>
+
+          <section class="cs-section" id="research" aria-labelledby="research-h">
+            <p class="section-label">03 · Research</p>
+            <h2 id="research-h">[What we learned from the people doing the work]</h2>
+            <p>[Methods: interviews, observation, participatory design, data analysis. Who you talked to and how many.]</p>
+
+            <!-- OPTIONAL: pull quote from a participant or stakeholder. -->
+            <blockquote class="cs-quote">
+              <p>"[A quote that captures the burden in their words.]"</p>
+              <cite>— [Role of the speaker, e.g. Practice manager, primary care clinic]</cite>
+            </blockquote>
+
+            <h3>[Key insight]</h3>
+            <p>[What the research revealed, and how it changed the plan.]</p>
+          </section>
+
+          <section class="cs-section" id="design" aria-labelledby="design-h">
+            <p class="section-label">04 · Design &amp; build</p>
+            <h2 id="design-h">[How the solution took shape]</h2>
+            <p>[Key design decisions and trade-offs. What you tried that didn't work.]</p>
+
+            <!-- OPTIONAL: figure. Swap the placeholder div for
+                 <img src="img/screenshot.png" alt="[describe what the image shows]" width="1600" height="900" loading="lazy" />
+                 Add class "cs-figure--wide" to the figure to let it run wider on large screens. -->
+            <figure class="cs-figure">
+              <div class="cs-figure-placeholder">[Screenshot, prototype, or diagram]</div>
+              <figcaption>[Caption: what the reader should notice.]</figcaption>
+            </figure>
+          </section>
+
+          <section class="cs-section" id="outcomes" aria-labelledby="outcomes-h">
+            <p class="section-label">05 · Outcomes</p>
+            <h2 id="outcomes-h">[What changed]</h2>
+            <p>[Adoption, time or cost saved, access gained, policy or program changes. Be specific about what you measured and what you didn't.]</p>
+
+            <!-- OPTIONAL: callout. Use "cs-callout cs-callout--orange" for a warmer accent. -->
+            <aside class="cs-callout">
+              <p class="callout-label">[Recognition / Published / Still in use]</p>
+              <p>[A short highlight, e.g. a publication, award, or scale-up.]</p>
+            </aside>
+          </section>
+
+          <section class="cs-section" id="reflection" aria-labelledby="reflection-h">
+            <p class="section-label">06 · Reflection</p>
+            <h2 id="reflection-h">[What I'd carry forward]</h2>
+            <p>[What you learned, what you'd do differently, and how this connects to civic tech and social work practice.]</p>
+          </section>
+
+          <section class="cs-section" id="references" aria-labelledby="references-h">
+            <p class="section-label">07 · References</p>
+            <h2 id="references-h">Further reading</h2>
+            <ul class="cs-refs">
+              <li>[Authors]. [Title]. <em>[Journal]</em>. [Year]. <a href="https://doi.org/[doi]" target="_blank" rel="noopener">doi:[doi]</a></li>
+            </ul>
+          </section>
+
+        </article>
+      </div>
+    </div>
+
+    <!-- ── Next case study ─────────────────────────────────── -->
+    <nav class="cs-next" aria-label="More work">
+      <div class="container">
+        <a href="/case-studies/[next-slug]/">
+          <p class="cs-next-label">Next case study</p>
+          <p class="cs-next-title">[Next project name] →</p>
+        </a>
+        <a href="/#projects" class="cs-next-all">See all work</a>
+      </div>
+    </nav>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="cs-footer">
+    <div class="container">
+      <span>Noa Kim · 2026</span>
+      <a href="/#contact">Get in touch</a>
+      <span>Built by hand · No frameworks harmed</span>
+    </div>
+  </footer>
+
+</body>
+</html>

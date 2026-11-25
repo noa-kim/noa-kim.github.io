@@ -478,6 +478,18 @@
     .project-link:hover { color: var(--fo-600); }
     .project-link:hover::after { transform: translateX(4px); }
 
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 1.25rem;
+      margin-top: 0.25rem;
+    }
+    .project-links .project-link { margin-top: 0; }
+    .project-link--secondary { color: var(--dg-main); font-weight: 500; }
+    .project-link--secondary::after { content: '↗'; }
+    .project-link--secondary:hover { color: var(--ot-main); }
+
     /* ─── Publications ───────────────────────────────────────── */
     #publications {
       background: var(--ot-200);
@@ -732,6 +744,13 @@
         <p class="section-label">Work</p>
         <div class="section-rule" aria-hidden="true"></div>
         <h2 class="section-heading" id="projects-heading">Selected Work</h2>
+        <!--
+          Adding a case study card: copy an <article class="project-card"> below.
+          Point the primary link at /case-studies/<slug>/ ("Read case study").
+          Optional secondary links (publication, slides) use
+          class="project-link project-link--secondary" inside <div class="project-links">.
+          Pages are built from case-studies/_template.html.
+        -->
         <div class="projects-grid">
 
           <article class="project-card">
@@ -741,7 +760,10 @@
               A web-based tool to navigate diabetes coverage and prior authorization, developed at Michigan Medicine. Grew from a single workflow into a suite supporting over 20 products across statewide quality improvement programs. Subject of a peer-reviewed publication in <em>Annals of Family Medicine</em>, 2025.
             </p>
             <p class="project-meta">Michigan Medicine · 2021–Present</p>
-            <a href="https://doi.org/10.1370/afm.240633" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Read Coverage Checker publication (opens in new tab)">Read publication</a>
+            <div class="project-links">
+              <a href="/case-studies/coverage-checker/" class="project-link" aria-label="Read the Coverage Checker case study">Read case study</a>
+              <a href="https://doi.org/10.1370/afm.240633" target="_blank" rel="noopener noreferrer" class="project-link project-link--secondary" aria-label="Read Coverage Checker publication (opens in new tab)">Publication</a>
+            </div>
           </article>
 
           <article class="project-card">
