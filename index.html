@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Noa Kim — Portfolio</title>
-  <meta name="description" content="Noa Kim — informatics design lead, UX researcher, published health informaticist, and MSW candidate at University of Michigan." />
+  <meta name="description" content="Noa Kim — civic technologist and health informatics product leader cutting administrative burden in health care. UX researcher, published researcher, and MSW candidate at the University of Michigan." />
   <!-- Adobe Fonts kit: Damson (display), Atkinson Hyperlegible Next (body), Keo (labels) -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/ifl2jio.css" />
@@ -155,6 +155,7 @@
       align-items: center;
       overflow: hidden;
       padding-top: var(--nav-h);
+      isolation: isolate;
     }
 
     #hero::before {
@@ -179,7 +180,43 @@
       animation: morph 14s ease-in-out infinite alternate-reverse;
     }
 
-
+    /* Bookshelf photo. Phones show the whole shelf as a band along the bottom
+       of the hero; wider screens fill the hero with the full frame. */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image: url('assets/img/books-1200.jpg');
+      background-image: image-set(url('assets/img/books-1200.webp') type('image/webp'), url('assets/img/books-1200.jpg') type('image/jpeg'));
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-position: center bottom;
+    }
+    /* Parchment wash keeps hero text readable over the shelf */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(246, 241, 235, 0.1) 0, rgba(246, 241, 235, 0.3) 45vw, var(--parchment) 78vw);
+    }
+    @media (max-width: 899px) {
+      /* leave room under the text for the shelf band */
+      #hero { padding-bottom: calc(75vw - 2rem); }
+      #hero::after { display: none; } /* keep the small blob off the shelf */
+    }
+    @media (min-width: 900px) {
+      .hero-bg {
+        background-image: url('assets/img/books-2400.jpg');
+        background-image: image-set(url('assets/img/books-2400.webp') type('image/webp'), url('assets/img/books-2400.jpg') type('image/jpeg'));
+        background-size: cover;
+        background-position: center 55%;
+      }
+      /* the photo fills the hero here, so the blobs would tint the books */
+      #hero::before, #hero::after { display: none; }
+      .hero-bg::after {
+        background: linear-gradient(90deg, rgba(246, 241, 235, 0.94) 0%, rgba(246, 241, 235, 0.9) 50%, rgba(246, 241, 235, 0.4) 72%, rgba(246, 241, 235, 0.12) 100%);
+      }
+    }
 
     @keyframes morph {
       0%   { border-radius: var(--blob-1); }
@@ -293,6 +330,51 @@
 
     #about .section-label { color: var(--ink-soft); }
     #about .section-heading { color: var(--ocean-twilight); margin-bottom: 2.5rem; }
+
+    /* 9–5 / 5–9 photo strip */
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .about-photo:first-child { grid-column: 1 / -1; }
+    @media (min-width: 768px) {
+      .about-photos { grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+      .about-photo:first-child { grid-column: auto; }
+    }
+    .about-photo { margin: 0; }
+    .about-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 6px;
+      background: var(--parchment-deep);
+    }
+    .about-photo:first-child img { aspect-ratio: 1 / 1; object-position: center 30%; }
+    @media (min-width: 768px) {
+      .about-photo:first-child img { aspect-ratio: 4 / 5; object-position: center; }
+    }
+    .about-photo .photo-bertie { object-position: 60% center; }
+    .about-photo figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+    .about-photo .photo-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--flame-ink);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    .about-photo:first-child .photo-label { color: var(--ocean-twilight); }
 
     .about-layout {
       display: grid;
@@ -643,14 +725,16 @@
 
     <!-- ── Hero ─────────────────────────────────────────────── -->
     <section id="hero" aria-labelledby="hero-name">
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="container">
         <div class="hero-inner">
-          <p class="hero-eyebrow" aria-hidden="true">Health Informatics · Human-Centered Design · Social Work</p>
+          <p class="hero-eyebrow" aria-hidden="true">Civic Tech · Health Informatics · Social Work</p>
           <h1 class="hero-name" id="hero-name">Noa Kim</h1>
-          <p class="hero-tagline">Informatics Design Lead &thinsp;·&thinsp; Published Researcher &thinsp;·&thinsp; MSW Candidate</p>
+          <p class="hero-tagline">Product leader cutting the administrative burden between people and their care.</p>
           <p class="hero-bio">
-            I spent nearly 20 years building technology systems in health care, libraries, and design.
-            Now I'm studying social work to help people heal from them.
+            For nearly 20 years I've built technology in health care, libraries, and design.
+            Today I lead products at Michigan Medicine that clear the paperwork standing between people and their care,
+            and I'm training as a social worker to better understand the harm these systems cause and how to repair it.
           </p>
           <a href="#projects" class="btn btn-primary">View my work</a>
         </div>
@@ -663,10 +747,51 @@
         <p class="section-label">Background</p>
         <div class="section-rule" aria-hidden="true"></div>
         <h2 class="section-heading" id="about-heading">About</h2>
+        <div class="about-photos">
+          <figure class="about-photo">
+            <picture>
+              <source srcset="assets/img/noa-kim-headshot.webp" type="image/webp">
+              <img src="assets/img/noa-kim-headshot.jpg" width="800" height="895" loading="lazy" decoding="async"
+                alt="Portrait of Noa Kim smiling, wearing round black glasses, a navy zip cardigan, and a rust-orange collared shirt against a soft lavender backdrop.">
+            </picture>
+            <figcaption><span class="photo-label">9 to 5</span>Leading product at Michigan Medicine.</figcaption>
+          </figure>
+          <figure class="about-photo">
+            <picture>
+              <source srcset="assets/img/noa-and-ziggy.webp" type="image/webp">
+              <img src="assets/img/noa-and-ziggy.jpg" width="900" height="1199" loading="lazy" decoding="async"
+                alt="Black-and-white photo of Noa at home, laughing while hugging their black cat Ziggy close to their cheek.">
+            </picture>
+            <figcaption><span class="photo-label">5 to 9</span>Home with Ziggy, chief of lap warming.</figcaption>
+          </figure>
+          <figure class="about-photo">
+            <picture>
+              <source srcset="assets/img/noa-and-bertie-oregon-coast.webp" type="image/webp">
+              <img class="photo-bertie" src="assets/img/noa-and-bertie-oregon-coast.jpg" width="1400" height="1050" loading="lazy" decoding="async"
+                alt="Noa crouches on a wide, wet Oregon beach under a big cloudy sky, taking a photo of their small black dog Bertie in a yellow harness.">
+            </picture>
+            <figcaption><span class="photo-label">5 to 9</span>Camping on the Oregon coast with Bertie.</figcaption>
+          </figure>
+        </div>
         <div class="about-layout">
           <div class="about-body">
             <p>
-              Coming Soon
+              Prior authorizations, coverage rules, and forms that don't talk to each other aren't neutral.
+              They're administrative burden, and they cost patients time, money, and dignity while wearing down
+              the clinicians who serve them. My work is about lifting that burden.
+            </p>
+            <p>
+              At Michigan Medicine, I lead informatics design and product for statewide collaborative quality initiatives.
+              Coverage Checker began as one workflow to help clinicians navigate diabetes coverage and prior authorization,
+              and grew into a suite supporting more than 20 products (published in <em>Annals of Family Medicine</em>, 2025).
+              Along the way I grew our digital portfolio from 6 to nearly 90 tools and built a UX team from 1 to 6,
+              grounded in 7,000+ hours of participatory design with patients, caregivers, and clinicians.
+            </p>
+            <p>
+              I bring a UX research background from the University of Michigan School of Information, and I'm now earning
+              my MSW at U-M on the path to clinical licensure. Social work gives me language for what I've seen in health tech:
+              moral injury, structural harm, and the power of collective action. I want to bring that lens to civic technology,
+              building public-interest tools that make systems easier to navigate and kinder to the people inside them.
             </p>
           </div>
           <aside class="about-sidebar" aria-label="Current roles and education">
