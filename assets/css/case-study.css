@@ -9,25 +9,31 @@
    ========================================================================== */
 
 :root {
-  --ot-100: #0c0f20;
-  --ot-200: #181d40;
-  --ot-300: #242c60;
-  --ot-400: #2f3a80;
-  --ot-main: #3c4aa1;
-  --ot-600: #5563c0;
-  --ot-700: #808ad0;
-  --ot-800: #aab1e0;
-  --ot-900: #d5d8ef;
-  --vc-main: #f2f3ae;
-  --vc-900: #fcfdef;
-  --dg-300: #484136;
-  --dg-main: #776d5a;
-  --dg-800: #cbc5ba;
-  --dg-900: #e5e2dd;
-  --fo-main: #ff4e00;
-  --fo-600: #ff7033;
-  --fo-900: #ffdbcc;
-  --garnet: #710000;
+  --ocean-twilight: #3c4aa1;
+  --pastel-petal: #eabfcb;
+  --dim-grey: #776d5a;
+  --flame-orange: #ff4e00;
+  --parchment: #f6f1eb;
+  /* Tints and shades derived from the palette. Contrast notes are WCAG
+     ratios against parchment unless stated; AA needs 4.5 for small text. */
+  --ocean-deep: #2a3478;      /* headings, strong text (10.1) */
+  --ink: #4a4335;             /* body text, dim grey darkened (8.7) */
+  --ink-soft: #5e5646;        /* secondary text on any light tint (6.5) */
+  --flame-ink: #b33600;       /* orange for small text and buttons (5.4; white on it 6.1) */
+  --petal-tint: #f9ecef;      /* soft pink section background */
+  --parchment-deep: #efe6dc;  /* alternate section background */
+  --surface: #fffdfa;         /* cards on parchment */
+  --line: #e3d9cc;            /* hairlines and card borders */
+  --line-strong: #d3c5b4;     /* dashed placeholders */
+  /* Use --dim-grey for text only on parchment or white (4.5 to 5.1).
+     Use --flame-orange only for decoration: rules, bars, borders, markers. */
+  /* Organic marks: hand-drawn squiggle, wavy section edge, blob shapes */
+  --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 14'%3E%3Cpath d='M2 9 C 10 2, 18 13, 27 7 S 44 2, 52 8 S 70 13, 78 6 S 90 4, 94 7' fill='none' stroke='%23ff4e00' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 38 C 180 8, 360 8, 540 30 S 900 58, 1080 32 S 1320 6, 1440 26 L1440 60 L0 60Z'/%3E%3C/svg%3E");
+  --wave-h: clamp(28px, 4vw, 60px);
+  --blob-1: 58% 42% 63% 37% / 45% 55% 45% 55%;
+  --blob-2: 41% 59% 38% 62% / 57% 39% 61% 43%;
+  --blob-3: 63% 37% 52% 48% / 38% 62% 44% 56%;
   --font-serif: 'damson', Georgia, serif;
   --font-sans: 'atkinson-hyperlegible-next', system-ui, sans-serif;
   --font-mono: 'keo', 'Courier New', monospace;
@@ -41,14 +47,14 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
   font-family: var(--font-sans);
-  color: var(--dg-300);
-  background: #fff;
+  color: var(--ink);
+  background: var(--parchment);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
-:focus-visible { outline: 2px solid var(--fo-main); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--flame-ink); outline-offset: 3px; }
 [id] { scroll-margin-top: calc(var(--nav-h) + var(--jump-h) + 1rem); }
 
 .container {
@@ -63,7 +69,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   left: 1rem; top: -100px;
   z-index: 200;
-  background: var(--fo-main);
+  background: var(--flame-ink);
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 3px;
@@ -77,8 +83,9 @@ a { color: inherit; text-decoration: none; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   height: var(--nav-h);
-  background: var(--ot-200);
-  border-bottom: 1px solid var(--ot-300);
+  background: rgba(246, 241, 235, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
 }
@@ -91,40 +98,57 @@ a { color: inherit; text-decoration: none; }
 .nav-brand {
   font-family: var(--font-serif);
   font-size: 1.15rem;
-  color: var(--vc-main);
+  color: var(--ocean-twilight);
   letter-spacing: 0.02em;
   white-space: nowrap;
   transition: color 0.2s;
 }
-.nav-brand:hover { color: #fff; }
+.nav-brand:hover { color: var(--flame-ink); }
 .nav-back {
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ot-800);
+  color: var(--ink-soft);
   transition: color 0.2s;
   white-space: nowrap;
 }
 .nav-back::before { content: '← '; }
-.nav-back:hover { color: var(--fo-main); }
+.nav-back:hover { color: var(--flame-ink); }
 
 /* ─── Hero: label, title, one-sentence deck, featured image ── */
 .cs-hero {
   position: relative;
   overflow: hidden;
-  background: var(--ot-100);
+  background: var(--parchment);
   padding-top: calc(var(--nav-h) + clamp(3rem, 8vw, 5rem));
 }
 .cs-hero::before {
   content: '';
   position: absolute;
-  top: -120px; right: -120px;
-  width: 380px; height: 380px;
-  border: 2px solid var(--ot-300);
-  border-radius: 50%;
+  top: -60px; right: -120px;
+  width: 440px; height: 400px;
+  background: var(--pastel-petal);
+  border-radius: var(--blob-1);
   opacity: 0.5;
   pointer-events: none;
+  animation: morph 18s ease-in-out infinite alternate;
+}
+.cs-hero::after {
+  content: '';
+  position: absolute;
+  top: 210px; right: 18%;
+  width: 150px; height: 135px;
+  background: var(--ocean-twilight);
+  border-radius: var(--blob-2);
+  opacity: 0.1;
+  pointer-events: none;
+  animation: morph 14s ease-in-out infinite alternate-reverse;
+}
+@keyframes morph {
+  0%   { border-radius: var(--blob-1); }
+  50%  { border-radius: var(--blob-2); }
+  100% { border-radius: var(--blob-3); }
 }
 .cs-hero .container { position: relative; z-index: 1; }
 
@@ -134,7 +158,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--fo-600);
+  color: var(--flame-ink);
   margin-bottom: 1rem;
 }
 .cs-hero h1 {
@@ -142,14 +166,14 @@ a { color: inherit; text-decoration: none; }
   font-weight: 400;
   font-size: clamp(2.5rem, 7vw, 4.75rem);
   line-height: 1.02;
-  color: #fff;
+  color: var(--ocean-twilight);
   max-width: 18ch;
   margin-bottom: 1.25rem;
 }
 .cs-deck {
   font-size: clamp(1.05rem, 2.4vw, 1.3rem);
-  font-weight: 300;
-  color: var(--ot-800);
+  font-weight: 400;
+  color: var(--ink-soft);
   line-height: 1.55;
   max-width: 640px;
 }
@@ -167,9 +191,9 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ot-700);
+  color: var(--dim-grey);
 }
-.cs-meta dd { font-size: 0.88rem; color: var(--vc-main); }
+.cs-meta dd { font-size: 0.88rem; color: var(--ink); }
 
 /* Featured image sits at the bottom of the hero and overlaps the page */
 .cs-hero-media {
@@ -181,7 +205,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 45%;
-  background: #fff;
+  background: var(--parchment);
 }
 .cs-hero-media .container { position: relative; z-index: 1; }
 .cs-hero-media img,
@@ -189,8 +213,8 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 6px;
-  box-shadow: 0 20px 50px rgba(12, 15, 32, 0.25);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(42, 52, 120, 0.18);
 }
 /* No featured image? Use <section class="cs-hero cs-hero-plain"> and drop .cs-hero-media */
 .cs-hero-plain { padding-bottom: clamp(3rem, 7vw, 4.5rem); }
@@ -200,9 +224,9 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: var(--nav-h);
   z-index: 50;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(246, 241, 235, 0.96);
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--dg-900);
+  border-bottom: 1px solid var(--line);
 }
 .cs-jump ol {
   list-style: none;
@@ -222,11 +246,11 @@ a { color: inherit; text-decoration: none; }
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--dg-main);
+  color: var(--dim-grey);
   border-bottom: 3px solid transparent;
   transition: color 0.2s, border-color 0.2s;
 }
-.cs-jump a:hover { color: var(--ot-main); border-bottom-color: var(--fo-main); }
+.cs-jump a:hover { color: var(--ocean-twilight); border-bottom-color: var(--flame-orange); }
 
 /* ─── Story sections ───────────────────────────────────────── */
 .cs-section {
@@ -238,21 +262,21 @@ a { color: inherit; text-decoration: none; }
   font-weight: 400;
   font-size: clamp(2rem, 4.5vw, 2.75rem);
   line-height: 1.1;
-  color: var(--ot-200);
+  color: var(--ocean-twilight);
   margin-bottom: 1.25rem;
 }
 .cs-section h2::before {
   content: '';
   display: block;
-  width: 40px; height: 3px;
-  background: var(--fo-main);
+  width: 96px; height: 14px;
+  background: var(--squiggle) no-repeat 0 0 / contain;
   margin-bottom: 1rem;
 }
 .cs-section h3 {
   font-family: var(--font-serif);
   font-weight: 400;
   font-size: 1.35rem;
-  color: var(--ot-300);
+  color: var(--ocean-deep);
   margin: 2.25rem 0 0.6rem;
 }
 .cs-section p,
@@ -266,23 +290,23 @@ a { color: inherit; text-decoration: none; }
 .cs-section ul,
 .cs-section ol { margin: 1rem 0 1rem 1.25rem; }
 .cs-section li + li { margin-top: 0.55rem; }
-.cs-section li::marker { color: var(--fo-main); }
-.cs-section strong { color: var(--ot-200); font-weight: 600; }
+.cs-section li::marker { color: var(--flame-orange); }
+.cs-section strong { color: var(--ocean-deep); font-weight: 600; }
 .cs-section a {
-  color: var(--ot-main);
+  color: var(--ocean-twilight);
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: var(--ot-800);
+  text-decoration-color: var(--pastel-petal);
 }
-.cs-section a:hover { color: var(--fo-main); text-decoration-color: var(--fo-main); }
+.cs-section a:hover { color: var(--flame-ink); text-decoration-color: var(--flame-orange); }
 
 /* The one sentence that frames the problem: <p class="cs-lede">…</p> */
 .cs-lede {
   font-family: var(--font-serif);
   font-size: clamp(1.35rem, 3vw, 1.7rem) !important;
   line-height: 1.35 !important;
-  color: var(--ot-200);
-  border-left: 3px solid var(--fo-main);
+  color: var(--ocean-deep);
+  border-left: 3px solid var(--flame-orange);
   padding-left: 1.25rem;
   margin: 1.75rem 0;
 }
@@ -296,9 +320,10 @@ a { color: inherit; text-decoration: none; }
 .cs-points li::before {
   content: '';
   position: absolute;
-  left: 0; top: 0.72em;
-  width: 9px; height: 9px;
-  background: var(--fo-main);
+  left: 0; top: 0.6em;
+  width: 11px; height: 10px;
+  background: var(--flame-orange);
+  border-radius: var(--blob-2);
 }
 
 /* Funder / collaborator credit line: <p class="cs-credit">…</p> */
@@ -306,14 +331,26 @@ a { color: inherit; text-decoration: none; }
   margin-top: 1.75rem !important;
   font-size: 0.9rem !important;
   font-style: italic;
-  color: var(--dg-main);
+  color: var(--dim-grey);
 }
 
 /* ─── Impact: headline results, shown before the story ────── */
-.cs-impact {
-  background: var(--vc-900);
-  border-bottom: 1px solid var(--dg-900);
+.cs-impact { position: relative; background: var(--petal-tint); }
+.cs-impact::before,
+.cs-cta::before,
+.cs-footer::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(var(--wave-h) * -1 + 1px);
+  height: var(--wave-h);
+  pointer-events: none;
+  -webkit-mask: var(--wave) no-repeat 0 0 / 100% 100%;
+          mask: var(--wave) no-repeat 0 0 / 100% 100%;
 }
+.cs-impact::before { background: var(--petal-tint); }
+.cs-cta::before    { background: var(--ocean-twilight); transform: scaleX(-1); }
+.cs-footer::before { background: var(--parchment-deep); }
 .cs-impact-list {
   list-style: none;
   margin: 1.5rem 0 0 !important;
@@ -322,27 +359,22 @@ a { color: inherit; text-decoration: none; }
   gap: 1rem;
 }
 @media (min-width: 760px) {
-  .cs-impact-list { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+  .cs-impact-list { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2.5rem; }
 }
 .cs-impact-list li {
   margin: 0 !important;
-  background: #fff;
-  border: 1px solid var(--dg-900);
-  border-left: 4px solid var(--ot-main);
-  border-radius: 4px;
-  padding: 1.25rem 1.4rem;
+  border-top: 1px solid var(--line-strong);
+  padding: 1.25rem 0 0.5rem;
   font-size: 1rem !important;
   line-height: 1.55 !important;
 }
-.cs-impact-list li:nth-child(2) { border-left-color: var(--fo-main); }
-.cs-impact-list li:nth-child(3) { border-left-color: var(--garnet); }
 .cs-impact-list strong {
   display: block;
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: clamp(2rem, 5vw, 2.6rem);
+  font-size: clamp(2.4rem, 6vw, 3.2rem);
   line-height: 1.05;
-  color: var(--ot-300);
+  color: var(--ocean-twilight);
   margin-bottom: 0.35rem;
 }
 
@@ -352,13 +384,13 @@ a { color: inherit; text-decoration: none; }
 .cs-quote {
   margin: 2.25rem 0;
   padding: 0.25rem 0 0.25rem 1.5rem;
-  border-left: 3px solid var(--ot-main);
+  border-left: 3px solid var(--ocean-twilight);
 }
 .cs-quote p {
   font-family: var(--font-serif);
   font-size: clamp(1.25rem, 3vw, 1.55rem) !important;
   line-height: 1.35 !important;
-  color: var(--ot-200);
+  color: var(--ocean-deep);
 }
 .cs-quote cite {
   display: block;
@@ -367,53 +399,41 @@ a { color: inherit; text-decoration: none; }
   font-style: normal;
   font-size: 0.7rem;
   letter-spacing: 0.08em;
-  color: var(--dg-main);
+  color: var(--dim-grey);
 }
 
 /* Figure: <figure class="cs-figure"><img …><figcaption>…</figcaption></figure> */
 .cs-figure { margin: 2.25rem 0; }
 .cs-figure img {
   width: 100%;
-  border-radius: 6px;
-  border: 1px solid var(--dg-900);
-  background: var(--dg-900);
+  border-radius: 14px;
+  background: var(--parchment-deep);
 }
 .cs-figure figcaption {
   margin-top: 0.6rem;
   font-size: 0.82rem;
   line-height: 1.5;
-  color: var(--dg-main);
+  color: var(--dim-grey);
 }
 .cs-figure-placeholder {
   aspect-ratio: 16 / 9;
   display: grid;
   place-items: center;
-  border: 2px dashed var(--dg-800);
-  border-radius: 6px;
-  background: var(--vc-900);
+  border: 2px dashed var(--line-strong);
+  border-radius: 14px;
+  background: var(--petal-tint);
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--dg-main);
+  color: var(--ink-soft);
   text-align: center;
   padding: 1rem;
 }
-.cs-hero-media .cs-figure-placeholder { border-color: var(--ot-400); background: var(--ot-200); color: var(--ot-700); }
+.cs-hero-media .cs-figure-placeholder { border-color: var(--pastel-petal); background: var(--surface); color: var(--ink-soft); }
 
 /* Role box: <aside class="cs-role">…</aside> */
 .cs-role {
-  position: relative;
-  background: var(--ot-900);
-  border: 1.5px solid var(--ot-700);
-  border-radius: 6px;
-  padding: 1.5rem 1.75rem 1.5rem 2rem;
-}
-.cs-role::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 4px; height: 100%;
-  background: var(--ot-main);
-  border-radius: 6px 0 0 6px;
+  border-left: 1px solid var(--line-strong);
+  padding: 0.25rem 0 0.25rem 1.5rem;
 }
 .cs-role ul { margin-bottom: 0; }
 
@@ -422,25 +442,25 @@ a { color: inherit; text-decoration: none; }
 .cs-refs li {
   font-size: 0.92rem !important;
   line-height: 1.6 !important;
-  border-left: 3px solid var(--ot-800);
+  border-left: 3px solid var(--pastel-petal);
   padding: 0.5rem 0 0.5rem 1rem;
 }
 .cs-refs li + li { margin-top: 0.75rem; }
 
 /* ─── Call to action band ─────────────────────────────────── */
 .cs-cta {
-  background: var(--ot-200);
+  background: var(--ocean-twilight);
   padding-block: clamp(3rem, 7vw, 4.5rem);
   position: relative;
-  overflow: hidden;
 }
 .cs-cta::after {
   content: '';
   position: absolute;
-  bottom: 36px; right: clamp(1.5rem, 8vw, 120px);
-  width: 90px; height: 14px;
-  background: var(--fo-main);
-  opacity: 0.7;
+  bottom: 30px; right: clamp(1.5rem, 8vw, 120px);
+  width: 170px; height: 150px;
+  background: var(--pastel-petal);
+  border-radius: var(--blob-3);
+  opacity: 0.18;
 }
 @media (max-width: 759px) { .cs-cta::after { display: none; } }
 .cs-cta h2 {
@@ -448,16 +468,18 @@ a { color: inherit; text-decoration: none; }
   font-weight: 400;
   font-size: clamp(1.75rem, 4vw, 2.4rem);
   line-height: 1.15;
-  color: var(--vc-main);
+  color: var(--parchment);
   max-width: 22ch;
   margin-bottom: 0.75rem;
 }
 .cs-cta p {
-  color: var(--ot-800);
+  color: var(--parchment);
   max-width: 560px;
   margin-bottom: 1.75rem;
 }
 .cs-cta-actions {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -465,35 +487,36 @@ a { color: inherit; text-decoration: none; }
 }
 .btn {
   display: inline-block;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.85rem 2rem;
-  border-radius: 3px;
-  background: var(--fo-main);
-  color: #fff;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  padding: 0.25rem 0 0.6rem;
+  color: var(--parchment);
+  background: var(--squiggle) repeat-x 0 100% / 48px 7px;
+  transition: color 0.2s, background-position 0.6s ease;
 }
+.btn::after { content: ' →'; }
 .btn:hover {
-  background: var(--fo-600);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 78, 0, 0.35);
+  color: var(--pastel-petal);
+  background-position: 48px 100%;
 }
 .cs-cta-link {
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--ot-800);
-  border-bottom: 1px solid var(--ot-400);
+  color: var(--parchment);
+  border-bottom: 1px solid var(--pastel-petal);
   padding-bottom: 2px;
 }
-.cs-cta-link:hover { color: var(--fo-main); border-bottom-color: var(--fo-main); }
+.cs-cta-link:hover { color: var(--pastel-petal); border-bottom-color: var(--flame-orange); }
+.cs-cta :focus-visible { outline-color: var(--parchment); }
 
 /* ─── Footer (matches home page) ──────────────────────────── */
 .cs-footer {
-  background: var(--ot-100);
+  position: relative;
+  background: var(--parchment-deep);
   padding-block: 2rem;
 }
 .cs-footer .container {
@@ -508,10 +531,10 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.05em;
-  color: var(--ot-700);
+  color: var(--ink-soft);
 }
-.cs-footer a { border-bottom: 1px solid var(--ot-400); }
-.cs-footer a:hover { color: var(--fo-main); border-bottom-color: var(--fo-main); }
+.cs-footer a { border-bottom: 1px solid var(--pastel-petal); }
+.cs-footer a:hover { color: var(--flame-ink); border-bottom-color: var(--flame-orange); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
