@@ -12,13 +12,6 @@
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/ifl2jio.css" />
   <link rel="stylesheet" href="/assets/css/case-study.css" />
-  <!-- DRAFT REVIEW MARKERS: delete this block and every .todo / .guess span before publishing. -->
-  <style>
-    .todo { display:block; background:#fff4b8; border:1px dashed #c9a400; border-radius:4px; padding:.6rem .8rem; margin:1rem 0; color:#5a4a00; font-size:.9rem; font-weight:400; }
-    .todo::before { content:'NEEDS NOA · '; font-family:var(--font-mono, monospace); font-size:.7rem; letter-spacing:.08em; font-weight:500; }
-    .guess { background:#ffe8dc; border-bottom:1px dashed #ff4e00; }
-    .guess::after { content:' [check]'; font-family:var(--font-mono, monospace); font-size:.7em; color:#ff4e00; }
-  </style>
 </head>
 <body>
 
@@ -89,7 +82,6 @@
         <p>When we asked practices in the Michigan Collaborative for Type 2 Diabetes (MCT2D) what stood in the way of prescribing these medications, <strong>83% named prior authorization or insurance coverage. Only 18% named prescribing knowledge.</strong> Clinicians knew what their patients needed. The paperwork was the barrier.</p>
         <p class="cs-lede">How might we give every member of a care team a clear, current answer to "will this plan cover it, and what will it take?" at the moment they need it?</p>
         <p>Payer formularies and medical policies were public but scattered across dozens of PDFs and portals, written for payers rather than clinics, and out of date almost as soon as they were saved. No single place put them together for Michigan practices.</p>
-        <span class="todo">Optional: one sentence from your own experience, such as a clinic visit or story where you saw this cost up close.</span>
       </div></div>
     </section>
 
@@ -123,14 +115,14 @@
         </figure>
 
         <h3>Coverage Quest: process mapping as a game</h3>
-        <p>Process mapping is a standard quality improvement tool, but it can feel like homework. So Larrea Young and I turned it into a game. At a 45-minute session during an MCT2D regional meeting <span class="guess">in 2023</span>, care teams from across the state set out to get a fictional patient covered for their prescription. Each game board, designed in-house, introduced a character with diagnoses, lab results, and current medications. Sticky notes served as game pieces:</p>
+        <p>Process mapping is a standard quality improvement tool, but it can feel like homework. So Larrea Young and I turned it into a game. At a 45-minute session during an MCT2D regional meeting, care teams from across the state set out to get a fictional patient covered for their prescription. Each game board, designed in-house, introduced a character with diagnoses, lab results, and current medications. Sticky notes served as game pieces:</p>
         <ul class="cs-points">
           <li><strong>Blue: the path.</strong> The steps a clinic usually takes to get a medication covered.</li>
           <li><strong>Orange: the obstacles.</strong> Barriers, setbacks, and challenges along the way.</li>
           <li><strong>Yellow: the magic.</strong> Best practices, tips, tools, and resources that helped.</li>
         </ul>
         <p>Players added MCT2D tool stickers wherever one of our resources could help. Once their character could finally start the prescription, each team placed a "Magic Wand" sticker on the one step they most wanted to fix. Fantasy music played in the background, and the facilitators wore wizard hats.</p>
-        <p>Many participants were skeptical at first, and most left with discussion points and tools to bring back to their practices. <strong>We collected more than 200 completed game boards</strong>, a map of where coverage breaks down in real Michigan clinics and where our tools were already in use. That map shaped what the interactive Coverage Checker needed to do.</p>
+        <p>Many participants were skeptical at first, and most left with discussion points and tools to bring back to their practices. <strong>We collected more than 200 completed game boards</strong>, each one a map of where coverage breaks down in a real Michigan clinic. MCT2D set out to use them to identify the most common coverage barriers, see where teams were already using its tools, and compare workflows across practices.</p>
 
         <blockquote class="cs-quote">
           <p>"Sometimes people need a shift in their environment and to do something unexpected."</p>
@@ -141,7 +133,6 @@
           <img src="img/coverage-quest.jpg" alt="Larrea Young and Noa Kim smile in a conference room set up with tables and chairs, both wearing tall blue felt wizard hats decorated with the MCT2D logo, a map of Michigan, and pictures of glucose monitors and insulin pens." width="1200" height="1200" loading="lazy" />
           <figcaption>Larrea Young and I, the Coverage Quest game masters, in our MCT2D wizard hats.</figcaption>
         </figure>
-        <span class="todo">Was Coverage Quest in 2023, and did the 200+ boards directly shape Coverage Checker's features? I inferred that link.</span>
 
         <h3>Then build the easy button, with clinicians</h3>
         <p>In early 2024, a small group of MCT2D clinicians met with us four times in focus groups to co-design and test an interactive version. Between sessions, the design team ran agile design sprints and brought back prototypes for clinicians to try and critique. We launched a minimum viable product in May 2024. In a few clicks, a care team member picks what they want to prescribe and the patient's plan, and the tool returns:</p>
@@ -177,11 +168,10 @@
     <section class="cs-section" id="outcomes" aria-labelledby="outcomes-h">
       <div class="container"><div class="prose-w">
         <h2 id="outcomes-h">Outcomes</h2>
-        <p>Coverage Checker now covers <strong>roughly 75% of Michigan's largest commercial, Medicare, and Medicaid policies</strong>, and has been downloaded and viewed <strong>more than 174,000 times</strong>. In its first months online, care teams ran <strong>10,545 searches</strong> and spent twice as long on Coverage Checker as on the average page of the site. In a survey, <strong>100% of users said they would recommend it to a colleague</strong> <span class="guess">how many were surveyed?</span>. One practice called it "our bible."</p>
+        <p>Coverage Checker now covers <strong>roughly 75% of Michigan's largest commercial, Medicare, and Medicaid policies</strong>, and has been downloaded and viewed <strong>more than 174,000 times</strong>. By December 2024, care teams had run <strong>10,545 searches</strong> and spent twice as long on Coverage Checker as on the average page of the site. In a user survey, <strong>100% of respondents said they would recommend it to a colleague</strong>. One practice called it "our bible."</p>
         <p>A companion tool helps patients understand their own plan's medication and CGM coverage. Practices told us the patient tools "have saved office staff time," and that patients feel more able to take their care into their own hands.</p>
         <p>The less visible outcome matters as much. Keeping the data current pushed us to build working relationships across the payer landscape, and <strong>regular collaboration with payers led to more accountability, improvements to coverage criteria, and streamlined approvals.</strong> The tool helps teams route around the burden, and it gave us standing to push on its source.</p>
         <p>The work has limits. Coverage Checker includes the most common Michigan plans but not pharmacy carve-outs, and it can't fix drug shortages, high-deductible plans, or slow-moving DME ordering systems. Next, MCT2D planned a mobile "Coverage Checker Lite," broader plan coverage through a pharmacy benefit manager data partnership, crowdsourced data quality checks, and coverage tracking for diabetes prevention programs.</p>
-        <span class="todo">Did the mobile app ship, and when? Any newer numbers for searches, plans covered, time saved per PA, or fewer denials?</span>
         <p>The work was peer reviewed in <em>Annals of Family Medicine</em> (2025) and presented at the IHI National Forum on Quality Improvement in Health Care (2024).</p>
         <p class="cs-credit">This work was made possible by a health plan's funding of the Michigan Collaborative for Type 2 Diabetes, a statewide collaborative quality initiative.</p>
       </div></div>
@@ -192,19 +182,17 @@
       <div class="container"><div class="prose-w">
         <h2 id="role-h">My role</h2>
         <aside class="cs-role">
-          <p>I joined MCT2D in 2021 as Informatics Design Lead, where I lead and manage the collaborative's design and informatics team. On Coverage Checker I owned the product from the first PDF through the interactive tool.</p>
+          <p>I joined MCT2D in 2021 as Informatics Design Lead, where I lead and manage the collaborative's design and informatics team. On Coverage Checker I worked across product, research, and design, from the first PDF guide through the interactive tool.</p>
           <ul>
-            <li><span class="guess">Created the November 2021 coverage guide</span> with Heidi Diez, PharmD, MCT2D's co-director and clinical pharmacy lead.</li>
+            <li>Developed the first coverage guide in November 2021 with Heidi Diez, PharmD, MCT2D's co-director and clinical pharmacy lead.</li>
             <li>Synthesized nearly 1,000 case summaries, needs assessments, and meeting transcripts into the case for an interactive tool.</li>
             <li>Co-created Coverage Quest with Larrea Young, a process-mapping game that gathered 200+ maps of coverage barriers from care teams.</li>
             <li>Ran 30+ hours of one-on-one research calls with payers, public plan medical leads, and manufacturer representatives.</li>
-            <li><span class="guess">Led the clinician focus groups and design sprints</span> and scoped the features for the May 2024 launch.</li>
-            <li><span class="guess">Set up the quarterly formulary and medical policy review</span> that keeps the tool accurate.</li>
+            <li>Worked with the design team on the clinician focus groups and design sprints behind the May 2024 launch.</li>
             <li>Co-presented the work at the IHI National Forum and published it as first and corresponding author in <em>Annals of Family Medicine</em>.</li>
           </ul>
         </aside>
         <p>I did this work with Larrea Young, MDes (design project manager), Julian Weisensel (multimedia designer), Ryan Carpus (senior web applications developer), and the clinicians, pharmacists, and quality improvement staff of MCT2D.</p>
-        <span class="todo">Please check the highlighted bullets. Were you the "informatics designer" who made the 2021 guide with Heidi? Did you or Larrea lead the focus groups and sprints? Add any decision of yours that changed the direction, and, if you like, a line connecting this work to your social work training.</span>
 
         <h3>Further reading</h3>
         <ul class="cs-refs">
