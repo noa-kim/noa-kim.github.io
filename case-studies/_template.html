@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--
+  CASE STUDY TEMPLATE
+  ───────────────────
+  Story-first structure: lead with the impact, then tell the story
+  (challenge → approach → outcomes), then credit your role and invite contact.
+
+  1. Copy this file to  case-studies/<slug>/index.html  (e.g. case-studies/coverage-checker/index.html).
+     The page will live at  https://noa-kim.github.io/case-studies/<slug>/
+  2. Replace every [BRACKETED] placeholder. Delete optional blocks you don't need
+     (featured image, pull quote, figure). Keep section ids matching the jump links.
+  3. Images go in  case-studies/<slug>/img/  and are referenced as  img/filename.png
+  4. Add a card for it in the Selected Work section of /index.html (see the comment there).
+
+  Writing guide (aim for ~900–1,200 words total):
+  · Deck: one sentence starting with who you partnered with and what changed.
+  · Impact: 2–3 headline results. Put the number in <strong>, then one line of context.
+  · The challenge: ~200 words, present tense. Bold-frame the core question with .cs-lede.
+  · Our approach: the longest section (~half the page). Use .cs-points bullets with bold lead-ins.
+  · Outcomes: ~150 words. Be specific about what was measured. End with a .cs-credit line for funders.
+  · My role: short. What you owned, who you worked with.
+
+  This file starts with an underscore, so GitHub Pages does not publish it.
+  To preview locally, run  python3 -m http.server  from the repo root and open
+  http://localhost:8000/case-studies/_template.html
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Project name] — Case Study · Noa Kim</title>
+  <meta name="description" content="[One sentence: what was built, for whom, and what administrative burden it reduced.]" />
+  <meta property="og:title" content="[Project name] — Case Study · Noa Kim" />
+  <meta property="og:description" content="[Same as the description above.]" />
+  <meta property="og:image" content="https://noa-kim.github.io/case-studies/[slug]/img/[featured].png" />
+  <!-- Adobe Fonts kit: Damson (display), Atkinson Hyperlegible Next (body), Keo (labels) -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/ifl2jio.css" />
+  <link rel="stylesheet" href="/assets/css/case-study.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ── Nav ─────────────────────────────────────────────── -->
+  <header>
+    <nav class="cs-nav" aria-label="Main navigation">
+      <div class="container">
+        <a href="/" class="nav-brand">Noa Kim</a>
+        <a href="/#projects" class="nav-back">All work</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ── Hero ────────────────────────────────────────────
+         No featured image? Add class "cs-hero-plain" to this section and delete .cs-hero-media. -->
+    <section class="cs-hero" aria-labelledby="cs-title">
+      <div class="container">
+        <p class="cs-tag">Case study · [Health IT]</p>
+        <h1 id="cs-title">[Improving Something Specific for Someone Specific]</h1>
+        <p class="cs-deck">[We partnered with … to … , so that … .]</p>
+        <dl class="cs-meta">
+          <div><dt>Role</dt><dd>[Product lead &amp; UX researcher]</dd></div>
+          <div><dt>Partner</dt><dd>[Michigan Medicine]</dd></div>
+          <div><dt>Years</dt><dd>[2021–present]</dd></div>
+        </dl>
+      </div>
+      <div class="cs-hero-media">
+        <div class="container">
+          <!-- Swap for: <img src="img/featured.png" alt="[describe the image]" width="1600" height="900" /> -->
+          <div class="cs-figure-placeholder">[Featured image, 16:9]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Jump links. Keep in sync with section ids below. ── -->
+    <nav class="cs-jump" aria-label="On this page">
+      <div class="container">
+        <ol>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="#challenge">The challenge</a></li>
+          <li><a href="#approach">Our approach</a></li>
+          <li><a href="#outcomes">Outcomes</a></li>
+          <li><a href="#role">My role</a></li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ── Impact ──────────────────────────────────────────── -->
+    <section class="cs-section cs-impact" id="impact" aria-labelledby="impact-h">
+      <div class="container">
+        <h2 id="impact-h">Impact</h2>
+        <ul class="cs-impact-list">
+          <li><strong>[1.3M]</strong>[what the number means, in one line]</li>
+          <li><strong>[480K hours]</strong>[what the number means, in one line]</li>
+          <li><strong>[20+]</strong>[what the number means, in one line]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── The challenge ───────────────────────────────────── -->
+    <section class="cs-section" id="challenge" aria-labelledby="challenge-h">
+      <div class="container"><div class="prose-w">
+        <h2 id="challenge-h">The challenge</h2>
+        <p>[Who carries the administrative burden today, and what it costs them in time, money, or care.]</p>
+        <p class="cs-lede">[The core question, in one sentence: How might we … ?]</p>
+        <p>[Why existing tools or processes don't solve it.]</p>
+      </div></div>
+    </section>
+
+    <!-- ── Our approach ────────────────────────────────────── -->
+    <section class="cs-section" id="approach" aria-labelledby="approach-h">
+      <div class="container"><div class="prose-w">
+        <h2 id="approach-h">Our approach</h2>
+        <p>[How the work started and who was involved.]</p>
+        <ul class="cs-points">
+          <li><strong>[Workstream one.]</strong> [What you did and why.]</li>
+          <li><strong>[Workstream two.]</strong> [What you did and why.]</li>
+          <li><strong>[Workstream three.]</strong> [What you did and why.]</li>
+        </ul>
+
+        <!-- OPTIONAL: pull quote from a participant or partner. -->
+        <blockquote class="cs-quote">
+          <p>"[A quote that captures the burden or the change in their words.]"</p>
+          <cite>— [Role of the speaker, e.g. Practice manager, primary care clinic]</cite>
+        </blockquote>
+
+        <h3>[How we worked]</h3>
+        <p>[Methods: participatory design, rapid prototyping, data review. Who you talked to and how often.]</p>
+
+        <!-- OPTIONAL: figure. Swap the placeholder for
+             <img src="img/screenshot.png" alt="[describe the image]" width="1600" height="900" loading="lazy" /> -->
+        <figure class="cs-figure">
+          <div class="cs-figure-placeholder">[Screenshot, prototype, or diagram]</div>
+          <figcaption>[Caption: what the reader should notice.]</figcaption>
+        </figure>
+
+        <h3>[Practices that made it work]</h3>
+        <ul class="cs-points">
+          <li><strong>[Practice.]</strong> [One sentence on why it mattered.]</li>
+          <li><strong>[Practice.]</strong> [One sentence on why it mattered.]</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <!-- ── Outcomes ────────────────────────────────────────── -->
+    <section class="cs-section" id="outcomes" aria-labelledby="outcomes-h">
+      <div class="container"><div class="prose-w">
+        <h2 id="outcomes-h">Outcomes</h2>
+        <p>[What changed, with <strong>bolded numbers</strong> where you have them. Be specific about what was measured and what wasn't.]</p>
+        <p>[What happens next: scale-up, policy change, publication.]</p>
+        <p class="cs-credit">[This work was supported by … .]</p>
+      </div></div>
+    </section>
+
+    <!-- ── My role ─────────────────────────────────────────── -->
+    <section class="cs-section" id="role" aria-labelledby="role-h">
+      <div class="container"><div class="prose-w">
+        <h2 id="role-h">My role</h2>
+        <aside class="cs-role">
+          <p>[One or two sentences on what you owned.]</p>
+          <ul>
+            <li>[Responsibility or decision]</li>
+            <li>[Responsibility or decision]</li>
+          </ul>
+        </aside>
+
+        <!-- OPTIONAL: further reading -->
+        <h3>Further reading</h3>
+        <ul class="cs-refs">
+          <li>[Authors]. [Title]. <em>[Journal]</em>. [Year]. <a href="https://doi.org/[doi]" target="_blank" rel="noopener">doi:[doi]</a></li>
+        </ul>
+      </div></div>
+    </section>
+
+    <!-- ── Call to action ──────────────────────────────────── -->
+    <section class="cs-cta" aria-labelledby="cta-h">
+      <div class="container">
+        <h2 id="cta-h">Working to cut administrative burden in health care?</h2>
+        <p>I'd love to hear what you're building, and where people are getting stuck.</p>
+        <div class="cs-cta-actions">
+          <a href="/#contact" class="btn">Get in touch</a>
+          <a href="/#projects" class="cs-cta-link">See more work</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="cs-footer">
+    <div class="container">
+      <span>Noa Kim · 2026</span>
+      <span>Built by hand · No frameworks harmed</span>
+    </div>
+  </footer>
+
+</body>
+</html>

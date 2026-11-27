@@ -1,0 +1,521 @@
+/* ==========================================================================
+   Case study pages — shared styles
+   Used by every page in /case-studies/. Tokens mirror the :root block in
+   /index.html; if you change a brand color there, change it here too.
+
+   Page flow (story-first, modeled on civic tech success stories):
+   hero → jump links → Impact → The challenge → Our approach → Outcomes
+   → My role → Further reading → call to action → footer
+   ========================================================================== */
+
+:root {
+  --ocean-twilight: #3c4aa1;
+  --pastel-petal: #eabfcb;
+  --dim-grey: #776d5a;
+  --flame-orange: #ff4e00;
+  --parchment: #f6f1eb;
+  /* Tints and shades derived from the palette. Contrast notes are WCAG
+     ratios against parchment unless stated; AA needs 4.5 for small text. */
+  --ocean-deep: #2a3478;      /* headings, strong text (10.1) */
+  --ink: #4a4335;             /* body text, dim grey darkened (8.7) */
+  --ink-soft: #5e5646;        /* secondary text on any light tint (6.5) */
+  --flame-ink: #b33600;       /* orange for small text and buttons (5.4; white on it 6.1) */
+  --petal-tint: #f9ecef;      /* soft pink section background */
+  --parchment-deep: #efe6dc;  /* alternate section background */
+  --surface: #fffdfa;         /* cards on parchment */
+  --line: #e3d9cc;            /* hairlines and card borders */
+  --line-strong: #d3c5b4;     /* dashed placeholders */
+  /* Use --dim-grey for text only on parchment or white (4.5 to 5.1).
+     Use --flame-orange only for decoration: rules, bars, borders, markers. */
+  --font-serif: 'damson', Georgia, serif;
+  --font-sans: 'atkinson-hyperlegible-next', system-ui, sans-serif;
+  --font-mono: 'keo', 'Courier New', monospace;
+  --max-w: 1100px;
+  --prose-w: 700px;
+  --nav-h: 64px;
+  --jump-h: 52px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--parchment);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--flame-ink); outline-offset: 3px; }
+[id] { scroll-margin-top: calc(var(--nav-h) + var(--jump-h) + 1rem); }
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+.prose-w { max-width: var(--prose-w); }
+
+.skip-link {
+  position: absolute;
+  left: 1rem; top: -100px;
+  z-index: 200;
+  background: var(--flame-ink);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.skip-link:focus { top: 0.75rem; }
+
+/* ─── Nav (matches home page) ──────────────────────────────── */
+.cs-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  background: rgba(246, 241, 235, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+}
+.cs-nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.nav-brand {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--ocean-twilight);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.nav-brand:hover { color: var(--flame-ink); }
+.nav-back {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-back::before { content: '← '; }
+.nav-back:hover { color: var(--flame-ink); }
+
+/* ─── Hero: label, title, one-sentence deck, featured image ── */
+.cs-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--parchment);
+  padding-top: calc(var(--nav-h) + clamp(3rem, 8vw, 5rem));
+}
+.cs-hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 380px; height: 380px;
+  border: 2px solid var(--pastel-petal);
+  border-radius: 50%;
+  opacity: 0.9;
+  pointer-events: none;
+}
+.cs-hero .container { position: relative; z-index: 1; }
+
+.cs-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--flame-ink);
+  margin-bottom: 1rem;
+}
+.cs-hero h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 7vw, 4.75rem);
+  line-height: 1.02;
+  color: var(--ocean-twilight);
+  max-width: 18ch;
+  margin-bottom: 1.25rem;
+}
+.cs-deck {
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+  font-weight: 400;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 640px;
+}
+
+/* Slim credit line: role · partner · years */
+.cs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.75rem;
+  margin-top: 1.75rem;
+}
+.cs-meta div { display: flex; gap: 0.5rem; align-items: baseline; }
+.cs-meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim-grey);
+}
+.cs-meta dd { font-size: 0.88rem; color: var(--ink); }
+
+/* Featured image sits at the bottom of the hero and overlaps the page */
+.cs-hero-media {
+  position: relative;
+  margin-top: clamp(2.5rem, 6vw, 3.5rem);
+}
+.cs-hero-media::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 45%;
+  background: var(--parchment);
+}
+.cs-hero-media .container { position: relative; z-index: 1; }
+.cs-hero-media img,
+.cs-hero-media .cs-figure-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 20px 50px rgba(42, 52, 120, 0.18);
+}
+/* No featured image? Use <section class="cs-hero cs-hero-plain"> and drop .cs-hero-media */
+.cs-hero-plain { padding-bottom: clamp(3rem, 7vw, 4.5rem); }
+
+/* ─── Jump links (sticky on all sizes) ─────────────────────── */
+.cs-jump {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 50;
+  background: rgba(246, 241, 235, 0.96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.cs-jump ol {
+  list-style: none;
+  display: flex;
+  gap: 0 clamp(1rem, 4vw, 2.25rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+  min-height: var(--jump-h);
+  align-items: center;
+}
+.cs-jump ol::-webkit-scrollbar { display: none; }
+.cs-jump a {
+  display: block;
+  white-space: nowrap;
+  padding: 0.9rem 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--dim-grey);
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.cs-jump a:hover { color: var(--ocean-twilight); border-bottom-color: var(--flame-orange); }
+
+/* ─── Story sections ───────────────────────────────────────── */
+.cs-section {
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+.cs-section + .cs-section:not(.cs-impact) { padding-top: 0; }
+.cs-section h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  line-height: 1.1;
+  color: var(--ocean-twilight);
+  margin-bottom: 1.25rem;
+}
+.cs-section h2::before {
+  content: '';
+  display: block;
+  width: 40px; height: 3px;
+  background: var(--flame-orange);
+  margin-bottom: 1rem;
+}
+.cs-section h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.35rem;
+  color: var(--ocean-deep);
+  margin: 2.25rem 0 0.6rem;
+}
+.cs-section p,
+.cs-section li {
+  font-size: clamp(1rem, 1.8vw, 1.08rem);
+  line-height: 1.75;
+}
+.cs-section p + p,
+.cs-section ul + p,
+.cs-section p + ul { margin-top: 1.1rem; }
+.cs-section ul,
+.cs-section ol { margin: 1rem 0 1rem 1.25rem; }
+.cs-section li + li { margin-top: 0.55rem; }
+.cs-section li::marker { color: var(--flame-orange); }
+.cs-section strong { color: var(--ocean-deep); font-weight: 600; }
+.cs-section a {
+  color: var(--ocean-twilight);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--pastel-petal);
+}
+.cs-section a:hover { color: var(--flame-ink); text-decoration-color: var(--flame-orange); }
+
+/* The one sentence that frames the problem: <p class="cs-lede">…</p> */
+.cs-lede {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3vw, 1.7rem) !important;
+  line-height: 1.35 !important;
+  color: var(--ocean-deep);
+  border-left: 3px solid var(--flame-orange);
+  padding-left: 1.25rem;
+  margin: 1.75rem 0;
+}
+
+/* Bulleted workstreams with a bold lead-in: <ul class="cs-points"><li><strong>Lead-in.</strong> Detail…</li></ul> */
+.cs-points { list-style: none; margin-left: 0 !important; }
+.cs-points li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.cs-points li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.72em;
+  width: 9px; height: 9px;
+  background: var(--flame-orange);
+}
+
+/* Funder / collaborator credit line: <p class="cs-credit">…</p> */
+.cs-credit {
+  margin-top: 1.75rem !important;
+  font-size: 0.9rem !important;
+  font-style: italic;
+  color: var(--dim-grey);
+}
+
+/* ─── Impact: headline results, shown before the story ────── */
+.cs-impact {
+  background: var(--petal-tint);
+  border-bottom: 1px solid var(--line);
+}
+.cs-impact-list {
+  list-style: none;
+  margin: 1.5rem 0 0 !important;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 760px) {
+  .cs-impact-list { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+}
+.cs-impact-list li {
+  margin: 0 !important;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--ocean-twilight);
+  border-radius: 4px;
+  padding: 1.25rem 1.4rem;
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+}
+.cs-impact-list li:nth-child(2) { border-left-color: var(--flame-orange); }
+.cs-impact-list li:nth-child(3) { border-left-color: var(--pastel-petal); }
+.cs-impact-list strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  line-height: 1.05;
+  color: var(--ocean-twilight);
+  margin-bottom: 0.35rem;
+}
+
+/* ─── Optional blocks ─────────────────────────────────────── */
+
+/* Pull quote: <blockquote class="cs-quote"><p>…</p><cite>…</cite></blockquote> */
+.cs-quote {
+  margin: 2.25rem 0;
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  border-left: 3px solid var(--ocean-twilight);
+}
+.cs-quote p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3vw, 1.55rem) !important;
+  line-height: 1.35 !important;
+  color: var(--ocean-deep);
+}
+.cs-quote cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--dim-grey);
+}
+
+/* Figure: <figure class="cs-figure"><img …><figcaption>…</figcaption></figure> */
+.cs-figure { margin: 2.25rem 0; }
+.cs-figure img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--parchment-deep);
+}
+.cs-figure figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--dim-grey);
+}
+.cs-figure-placeholder {
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--line-strong);
+  border-radius: 6px;
+  background: var(--petal-tint);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  text-align: center;
+  padding: 1rem;
+}
+.cs-hero-media .cs-figure-placeholder { border-color: var(--pastel-petal); background: var(--surface); color: var(--ink-soft); }
+
+/* Role box: <aside class="cs-role">…</aside> */
+.cs-role {
+  position: relative;
+  background: var(--surface);
+  border: 1.5px solid var(--pastel-petal);
+  border-radius: 6px;
+  padding: 1.5rem 1.75rem 1.5rem 2rem;
+}
+.cs-role::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--ocean-twilight);
+  border-radius: 6px 0 0 6px;
+}
+.cs-role ul { margin-bottom: 0; }
+
+/* References list */
+.cs-refs { list-style: none; margin-left: 0 !important; }
+.cs-refs li {
+  font-size: 0.92rem !important;
+  line-height: 1.6 !important;
+  border-left: 3px solid var(--pastel-petal);
+  padding: 0.5rem 0 0.5rem 1rem;
+}
+.cs-refs li + li { margin-top: 0.75rem; }
+
+/* ─── Call to action band ─────────────────────────────────── */
+.cs-cta {
+  background: var(--ocean-twilight);
+  padding-block: clamp(3rem, 7vw, 4.5rem);
+  position: relative;
+  overflow: hidden;
+}
+.cs-cta::after {
+  content: '';
+  position: absolute;
+  bottom: 36px; right: clamp(1.5rem, 8vw, 120px);
+  width: 90px; height: 14px;
+  background: var(--flame-orange);
+  opacity: 0.9;
+}
+@media (max-width: 759px) { .cs-cta::after { display: none; } }
+.cs-cta h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  line-height: 1.15;
+  color: var(--parchment);
+  max-width: 22ch;
+  margin-bottom: 0.75rem;
+}
+.cs-cta p {
+  color: var(--parchment);
+  max-width: 560px;
+  margin-bottom: 1.75rem;
+}
+.cs-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+}
+.btn {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border-radius: 3px;
+  background: var(--flame-ink);
+  color: #fff;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn:hover {
+  background: var(--ocean-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(42, 52, 120, 0.3);
+}
+.cs-cta-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--parchment);
+  border-bottom: 1px solid var(--pastel-petal);
+  padding-bottom: 2px;
+}
+.cs-cta-link:hover { color: var(--pastel-petal); border-bottom-color: var(--flame-orange); }
+.cs-cta :focus-visible { outline-color: var(--parchment); }
+
+/* ─── Footer (matches home page) ──────────────────────────── */
+.cs-footer {
+  background: var(--parchment-deep);
+  border-top: 1px solid var(--line);
+  padding-block: 2rem;
+}
+.cs-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  align-items: center;
+}
+.cs-footer span,
+.cs-footer a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
+.cs-footer a { border-bottom: 1px solid var(--pastel-petal); }
+.cs-footer a:hover { color: var(--flame-ink); border-bottom-color: var(--flame-orange); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
