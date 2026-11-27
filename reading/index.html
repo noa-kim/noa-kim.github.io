@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--
+  WHAT I'M READING
+  ────────────────
+  How to edit this page (no build step, just HTML):
+
+  · Each pick is one <li class="pick"> … </li> block inside its section
+    (Books, Podcasts, Articles, Events). Look for "COPY ME" below.
+  · To add a pick: copy a whole block, paste it at the TOP of its list
+    (newest first), and fill in the fields. Delete any line you don't need,
+    such as the link.
+  · To remove a pick: delete its whole <li> … </li> block.
+  · Blocks marked class="pick is-placeholder" show a "Placeholder" tag.
+    When you replace one with a real pick, delete "is-placeholder" from it.
+  · A section with no picks can be deleted, along with its link in the
+    "On this page" list near the top.
+  · To preview locally, run  python3 -m http.server  from the repo root
+    and open http://localhost:8000/reading/
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What I'm Reading · Noa Kim</title>
+  <meta name="description" content="Books, podcasts, articles and events that have moved Noa Kim lately, shared by a former public librarian." />
+  <meta property="og:title" content="What I'm Reading · Noa Kim" />
+  <meta property="og:description" content="Books, podcasts, articles and events that have moved Noa Kim lately, shared by a former public librarian." />
+  <!-- Adobe Fonts kit: Damson (display), Atkinson Hyperlegible Next (body), Keo (labels) -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/ifl2jio.css" />
+  <link rel="stylesheet" href="/assets/css/case-study.css" />
+  <link rel="stylesheet" href="/assets/css/reading.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ── Nav ─────────────────────────────────────────────── -->
+  <header>
+    <nav class="cs-nav" aria-label="Main navigation">
+      <div class="container">
+        <a href="/" class="nav-brand">Noa Kim</a>
+        <ul class="rd-nav-links" role="list">
+          <li><a href="/#projects">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/reading/" aria-current="page">Reading</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ── Intro ───────────────────────────────────────────
+         PLACEHOLDER INTRO: drafted from Noa's own words. Edit freely. -->
+    <section class="rd-hero" aria-labelledby="rd-title">
+      <div class="container">
+        <p class="cs-tag">Reading, listening, attending</p>
+        <h1 id="rd-title">What I&rsquo;m Reading</h1>
+        <div class="rd-intro">
+          <p>Before I worked in product, I was a public librarian. The part of that work I loved most is still the part I care about most: connecting with each other through the ideas and stories that move us.</p>
+          <p>This is my shelf of recent picks. Books, podcasts, articles and events that changed how I think, or simply stayed with me. If one of them moves you too, I&rsquo;d love to hear about it.</p>
+        </div>
+        <nav class="rd-jump" aria-label="On this page">
+          <ul role="list">
+            <li><a href="#books">Books</a></li>
+            <li><a href="#podcasts">Podcasts</a></li>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#events">Events</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         BOOKS
+         ══════════════════════════════════════════════════════ -->
+    <section class="rd-shelf" id="books" aria-labelledby="books-heading">
+      <div class="container">
+        <header class="rd-shelf-head">
+          <h2 id="books-heading">Books</h2>
+        </header>
+        <ol class="rd-picks" role="list">
+
+          <!-- COPY ME: one book ───────────────────────────── -->
+          <li class="pick is-placeholder">
+            <p class="pick-meta"><span class="pick-when">[Month Year]</span></p>
+            <h3 class="pick-title">[Book title]</h3>
+            <p class="pick-by">[Author]</p>
+            <p class="pick-note">[One to three sentences, in your words, on why this book moved you.]</p>
+            <a class="pick-link" href="[https://… link to the book, ideally a library or bookshop page]">Find it</a>
+          </li>
+          <!-- /COPY ME ─────────────────────────────────────── -->
+
+          <li class="pick is-placeholder">
+            <p class="pick-meta"><span class="pick-when">[Month Year]</span></p>
+            <h3 class="pick-title">[Book title]</h3>
+            <p class="pick-by">[Author]</p>
+            <p class="pick-note">[Why it moved you.]</p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         PODCASTS
+         ══════════════════════════════════════════════════════ -->
+    <section class="rd-shelf" id="podcasts" aria-labelledby="podcasts-heading">
+      <div class="container">
+        <header class="rd-shelf-head">
+          <h2 id="podcasts-heading">Podcasts</h2>
+        </header>
+        <ol class="rd-picks" role="list">
+
+          <!-- COPY ME: one podcast (a show or a single episode) ─ -->
+          <li class="pick is-placeholder">
+            <p class="pick-meta"><span class="pick-when">[Month Year]</span></p>
+            <h3 class="pick-title">[Episode title]</h3>
+            <p class="pick-by">[Show name] · [Host or guest]</p>
+            <p class="pick-note">[Why it stayed with you.]</p>
+            <a class="pick-link" href="[https://… link to the episode]">Listen</a>
+          </li>
+          <!-- /COPY ME ─────────────────────────────────────── -->
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         ARTICLES
+         ══════════════════════════════════════════════════════ -->
+    <section class="rd-shelf" id="articles" aria-labelledby="articles-heading">
+      <div class="container">
+        <header class="rd-shelf-head">
+          <h2 id="articles-heading">Articles</h2>
+        </header>
+        <ol class="rd-picks" role="list">
+
+          <!-- COPY ME: one article, essay or report ─────────── -->
+          <li class="pick is-placeholder">
+            <p class="pick-meta"><span class="pick-when">[Month Year]</span></p>
+            <h3 class="pick-title">[Article title]</h3>
+            <p class="pick-by">[Author] · [Publication]</p>
+            <p class="pick-note">[Why it moved you.]</p>
+            <a class="pick-link" href="[https://… link to the article]">Read</a>
+          </li>
+          <!-- /COPY ME ─────────────────────────────────────── -->
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         EVENTS
+         ══════════════════════════════════════════════════════ -->
+    <section class="rd-shelf" id="events" aria-labelledby="events-heading">
+      <div class="container">
+        <header class="rd-shelf-head">
+          <h2 id="events-heading">Events</h2>
+        </header>
+        <ol class="rd-picks" role="list">
+
+          <!-- COPY ME: one talk, conference, reading or gathering -->
+          <li class="pick is-placeholder">
+            <p class="pick-meta"><span class="pick-when">[Month Year]</span></p>
+            <h3 class="pick-title">[Event or talk name]</h3>
+            <p class="pick-by">[Host or speaker] · [City or online]</p>
+            <p class="pick-note">[What you took away from it.]</p>
+            <a class="pick-link" href="[https://… link to the event or recording]">Details</a>
+          </li>
+          <!-- /COPY ME ─────────────────────────────────────── -->
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ── Invitation ──────────────────────────────────────── -->
+    <section class="rd-invite" aria-labelledby="rd-invite-heading">
+      <div class="container">
+        <h2 id="rd-invite-heading">Have something I should read?</h2>
+        <p>Send it my way at <a href="mailto:hifromnoa@gmail.com">hifromnoa@gmail.com</a>.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="cs-footer">
+    <div class="container">
+      <span>Noa Kim · 2026</span>
+      <span>Built by hand · No frameworks harmed</span>
+    </div>
+  </footer>
+
+</body>
+</html>
