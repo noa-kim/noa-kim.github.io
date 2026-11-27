@@ -619,6 +619,13 @@
       margin-top: 0.25rem;
     }
 
+    .project-card p a {
+      color: var(--ocean-twilight);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .project-card p a:hover { color: var(--flame-ink); }
+
     /* Impact numbers on a featured case study */
     .impact-stats {
       display: grid;
@@ -907,8 +914,8 @@
             <span class="project-tag">In-house capacity · Team building</span>
             <h3>Building the first in-house design and engineering team in a payer's value-based care programs</h3>
             <p>
-              Within Blue Cross Blue Shield of Michigan's Value Partnerships, which runs value-based reimbursement work across
-              Medicaid, Medicare Advantage, and commercial plans, design and engineering had been contracted out product by product.
+              At the largest commercial, Medicare Advantage, and Medicaid managed care plan, the value-based reimbursement programs
+              contracted out design and engineering product by product.
               As in many public agencies, the result was a patchwork of tools with growing technical debt and missing handoffs.
               I was lead drafter of the work plan, then hired, built, and operationalized the first in-house team of human-centered
               designers and full-stack engineers in any of its value-based programs.
@@ -918,7 +925,17 @@
               unseen clinical support staff (care managers, pharmacists, dietitians, and social workers) in cost-effective,
               outcomes-based care.
             </p>
-            <p class="project-meta">Blue Cross Blue Shield of Michigan Value Partnerships · [Years] · [Team size]</p>
+            <ul class="impact-stats" aria-label="In-house team results">
+              <li><strong>1 → 6</strong>designers and engineers on the in-house team</li>
+              <li><strong>150+</strong>point-of-care tools, from EHR workarounds to patient education portals</li>
+              <li><strong>10,000s</strong>of physicians reached across Michigan</li>
+            </ul>
+            <p>
+              The tools range from walk-through videos and tailored patient education portals to a statewide patient registry
+              dashboard in Tableau, built through a partnership with the
+              <a href="https://mihin.org/our-network-v22/" target="_blank" rel="noopener noreferrer">Michigan Health Information Network Shared Services (MiHIN)</a>.
+            </p>
+            <p class="project-meta">Value-based care programs at a major health plan · 2021–2026</p>
             <span class="project-soon">Case study coming soon</span>
           </article>
 
