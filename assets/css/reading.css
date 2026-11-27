@@ -163,6 +163,43 @@
 
 .rd-picks { list-style: none; max-width: 42rem; }
 
+/* ─── Groups inside a shelf (e.g. Goodreads feed, then hand picks) ── */
+.rd-shelf-body { min-width: 0; }
+.rd-group + .rd-group { margin-top: 2.5rem; }
+.rd-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--flame-ink);
+  margin-bottom: 1rem;
+}
+.rd-group-label a { color: var(--ocean-twilight); border-bottom: 1px solid var(--pastel-petal); }
+.rd-group-label a:hover { color: var(--flame-ink); }
+/* An empty Goodreads shelf hides its group */
+.rd-group--feed:not(:has(.pick)) { display: none; }
+
+/* Book with a cover: small cover beside the text, no frame */
+.pick--book:has(.pick-cover) {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  column-gap: 1.25rem;
+  align-items: start;
+}
+.pick--book:has(.pick-cover) > :not(.pick-cover) { grid-column: 2; justify-self: start; }
+.pick-cover {
+  grid-column: 1;
+  grid-row: 1 / span 6;
+  width: 64px;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 2px 4px 4px 2px;
+  box-shadow: 0 6px 16px rgba(74, 67, 53, 0.18);
+}
+.pick--book:has(.pick-cover)::before { display: none; }
+.pick--book:has(.pick-cover) { padding-left: 0; }
+
 /* ─── A single pick ───────────────────────────────────────── */
 .pick {
   position: relative;
@@ -189,6 +226,7 @@
 
 .pick-meta {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   align-items: baseline;
   font-family: var(--font-mono);
@@ -198,6 +236,7 @@
   color: var(--ink-soft);
   margin-bottom: 0.4rem;
 }
+.pick-meta span { white-space: nowrap; }
 .pick-meta span + span::before { content: '·'; margin-right: 0.75rem; }
 .pick.is-placeholder .pick-meta::after {
   content: 'Placeholder';

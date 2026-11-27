@@ -12,10 +12,14 @@
   · To remove a pick: delete its whole <li> … </li> block.
   · Blocks marked class="pick is-placeholder" show a "Placeholder" tag.
     When you replace one with a real pick, delete "is-placeholder" from it.
-  · Articles: most come from Noa's public Instapaper folder. A GitHub
-    Action (.github/workflows/sync-instapaper.yml) rewrites the list between
-    the INSTAPAPER:START and INSTAPAPER:END markers once a day. Save or
-    remove articles in Instapaper; hand-picked ones go above the markers.
+  · Two lists fill themselves once a day from Noa's public feeds, via the
+    GitHub Action in .github/workflows/sync-reading-feeds.yml:
+      Books → "On my nightstand" from the Goodreads currently-reading shelf
+              (between the GOODREADS:START and GOODREADS:END markers)
+      Articles → the public Instapaper folder
+              (between the INSTAPAPER:START and INSTAPAPER:END markers)
+    Don't edit inside the markers; change the shelf or folder instead.
+    Hand-picked books and articles go outside the markers.
   · A section with no picks can be deleted, along with its link in the
     "On this page" list near the top.
   · To preview locally, run  python3 -m http.server  from the repo root
@@ -85,6 +89,37 @@
         <header class="rd-shelf-head">
           <h2 id="books-heading">Books</h2>
         </header>
+        <div class="rd-shelf-body">
+
+        <!-- Currently reading: everything between the two GOODREADS markers is
+             written by the "Sync reading feeds" GitHub Action each day, from
+             Noa's public Goodreads "currently reading" shelf. Edits inside the
+             markers will be overwritten; update the shelf on Goodreads instead.
+             When the shelf is empty, this group hides itself. -->
+        <div class="rd-group rd-group--feed">
+          <p class="rd-group-label">On my nightstand · <a href="https://www.goodreads.com/review/list/1278912?shelf=currently-reading">via Goodreads</a></p>
+          <ol class="rd-picks" role="list">
+          <!-- GOODREADS:START -->
+          <li class="pick pick--book pick--feed">
+            <img class="pick-cover" src="https://via.placeholder.com/98x150.png" alt="" width="64" height="96" loading="lazy" />
+            <p class="pick-meta"><span>Currently reading</span><span class="pick-when">Since November 2026</span></p>
+            <h3 class="pick-title">Sample Book &amp; Subtitle</h3>
+            <p class="pick-by">Sample Author</p>
+            <a class="pick-link" href="https://www.goodreads.com/book/show/12345">On Goodreads</a>
+          </li>
+
+          <li class="pick pick--book pick--feed">
+            <p class="pick-meta"><span>Currently reading</span></p>
+            <h3 class="pick-title">No Cover Book</h3>
+            <p class="pick-by">Another Author</p>
+            <a class="pick-link" href="https://www.goodreads.com/book/show/678">On Goodreads</a>
+          </li>
+          <!-- GOODREADS:END -->
+          </ol>
+        </div>
+
+        <div class="rd-group">
+          <p class="rd-group-label">Books that moved me</p>
         <ol class="rd-picks" role="list">
 
           <!-- COPY ME: one book ───────────────────────────── -->
@@ -105,6 +140,9 @@
           </li>
 
         </ol>
+        </div>
+
+        </div>
       </div>
     </section>
 
@@ -157,14 +195,23 @@
           -->
 
           <!-- Everything between the two INSTAPAPER markers is written by the
-               "Sync Instapaper reading list" GitHub Action each day, from Noa's
+               "Sync reading feeds" GitHub Action each day, from Noa's
                public Instapaper folder. Edits made inside the markers will be
                overwritten; change what's saved in Instapaper instead. -->
           <!-- INSTAPAPER:START -->
-          <li class="pick is-placeholder">
-            <p class="pick-meta"><span>Saved on Instapaper</span></p>
-            <h3 class="pick-title">[Your Instapaper articles appear here]</h3>
-            <p class="pick-note">[The daily sync fills this list from your public Instapaper folder.]</p>
+          <li class="pick pick--feed">
+            <p class="pick-meta"><span class="pick-when">November 2026</span><span>Saved on Instapaper</span></p>
+            <h3 class="pick-title">Sample article one &amp; more</h3>
+            <p class="pick-by">example.org</p>
+            <p class="pick-note">A short summary of the first sample article.</p>
+            <a class="pick-link" href="https://www.example.org/one">Read</a>
+          </li>
+
+          <li class="pick pick--feed">
+            <p class="pick-meta"><span class="pick-when">November 2026</span><span>Saved on Instapaper</span></p>
+            <h3 class="pick-title">Sample two</h3>
+            <p class="pick-by">example.com</p>
+            <a class="pick-link" href="https://example.com/two">Read</a>
           </li>
           <!-- INSTAPAPER:END -->
 
