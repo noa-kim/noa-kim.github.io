@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Noa Kim — Portfolio</title>
   <meta name="description" content="Noa Kim — civic technologist and health informatics product leader cutting administrative burden in health care. UX researcher, published researcher, and MSW candidate at the University of Michigan." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Adobe Fonts kit: Damson (display), Atkinson Hyperlegible Next (body), Keo (labels) -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/ifl2jio.css" />
   <style>
     /* ─── Custom Properties ──────────────────────────────────────── */
     :root {
@@ -30,9 +30,9 @@
       --fo-600: #ff7033;
       --fo-900: #ffdbcc;
       --garnet: #710000;
-      --font-serif: 'DM Serif Display', 'Playfair Display', Georgia, serif;
-      --font-sans: 'Inter', system-ui, sans-serif;
-      --font-mono: 'DM Mono', 'Courier New', monospace;
+      --font-serif: 'damson', Georgia, serif;
+      --font-sans: 'atkinson-hyperlegible-next', system-ui, sans-serif;
+      --font-mono: 'keo', 'Courier New', monospace;
       --max-w: 1100px;
       --nav-h: 64px;
     }
@@ -478,6 +478,29 @@
     .project-link:hover { color: var(--fo-600); }
     .project-link:hover::after { transform: translateX(4px); }
 
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 1.25rem;
+      margin-top: 0.25rem;
+    }
+    .project-links .project-link { margin-top: 0; }
+    .project-link--secondary { color: var(--dg-main); font-weight: 500; }
+    .project-link--secondary::after { content: '↗'; }
+    .project-link--secondary:hover { color: var(--ot-main); }
+
+    .project-card--soon { border-top-color: var(--dg-800); box-shadow: none; border: 1px dashed var(--dg-800); border-top: 4px solid var(--dg-800); }
+    .project-card--soon:hover { transform: none; box-shadow: none; }
+    .project-soon {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dg-main);
+      margin-top: 0.25rem;
+    }
+
     /* ─── Publications ───────────────────────────────────────── */
     #publications {
       background: var(--ot-200);
@@ -748,6 +771,13 @@
         <p class="section-label">Work</p>
         <div class="section-rule" aria-hidden="true"></div>
         <h2 class="section-heading" id="projects-heading">Selected Work</h2>
+        <!--
+          Adding a case study card: copy an <article class="project-card"> below.
+          Point the primary link at /case-studies/<slug>/ ("Read case study").
+          Optional secondary links (publication, slides) use
+          class="project-link project-link--secondary" inside <div class="project-links">.
+          Pages are built from case-studies/_template.html.
+        -->
         <div class="projects-grid">
 
           <article class="project-card">
@@ -757,7 +787,10 @@
               A web-based tool to navigate diabetes coverage and prior authorization, developed at Michigan Medicine. Grew from a single workflow into a suite supporting over 20 products across statewide quality improvement programs. Subject of a peer-reviewed publication in <em>Annals of Family Medicine</em>, 2025.
             </p>
             <p class="project-meta">Michigan Medicine · 2021–Present</p>
-            <a href="https://doi.org/10.1370/afm.240633" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Read Coverage Checker publication (opens in new tab)">Read publication</a>
+            <div class="project-links">
+              <a href="/case-studies/coverage-checker/" class="project-link" aria-label="Read the Coverage Checker case study">Read case study</a>
+              <a href="https://doi.org/10.1370/afm.240633" target="_blank" rel="noopener noreferrer" class="project-link project-link--secondary" aria-label="Read Coverage Checker publication (opens in new tab)">Publication</a>
+            </div>
           </article>
 
           <article class="project-card">
@@ -770,14 +803,14 @@
             <a href="../SW600/" class="project-link" aria-label="View the AI Psychosis health issue brief">View project</a>
           </article>
 
-          <article class="project-card">
-            <span class="project-tag">Design · UX</span>
-            <h3>This Portfolio</h3>
+          <article class="project-card project-card--soon">
+            <span class="project-tag">Health IT · Case study</span>
+            <h3>[Second administrative burden project]</h3>
             <p>
-            Thanks for visiting!
+              [One or two sentences on the burden this project tackled and who it helped.]
             </p>
-            <p class="project-meta">Personal · 2025</p>
-            <a href="#hero" class="project-link" aria-label="You're already here">You're here</a>
+            <p class="project-meta">[Organization] · [Years]</p>
+            <span class="project-soon">Case study coming soon</span>
           </article>
 
         </div>
