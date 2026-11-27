@@ -145,6 +145,23 @@
     }
     .nav-links a:hover { color: var(--flame-ink); }
     .nav-links a:hover::after { width: 100%; }
+    /* Phones: keep links on one line and let the row scroll sideways,
+       so they never wrap out of the fixed nav bar */
+    @media (max-width: 760px) {
+      header > nav .container { padding-right: 0; }
+      .nav-links {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        min-width: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding: 6px clamp(1.25rem, 5vw, 3rem) 6px 0.25rem;
+        -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 28px), transparent);
+        mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 28px), transparent);
+      }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { white-space: nowrap; }
+    }
 
     /* ─── Hero ───────────────────────────────────────────────── */
     #hero {
@@ -896,6 +913,7 @@
           <li><a href="#approach">Principles</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#publications">Publications</a></li>
+          <li><a href="/reading/">Reading</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
