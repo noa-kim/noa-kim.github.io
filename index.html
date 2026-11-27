@@ -684,6 +684,61 @@
       margin-bottom: 2.5rem;
     }
 
+    .principles-list {
+      list-style: none;
+      counter-reset: principle;
+      max-width: 820px;
+      margin-bottom: 3.5rem;
+    }
+    .principles-list li {
+      counter-increment: principle;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem 2.5rem;
+      border-top: 1px solid var(--line-strong);
+      padding: 1.75rem 0;
+    }
+    @media (min-width: 768px) {
+      .principles-list li { grid-template-columns: 220px 1fr; }
+    }
+    .principles-list h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--ocean-twilight);
+    }
+    .principles-list h3::before {
+      content: counter(principle, upper-roman);
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--flame-ink);
+      margin-bottom: 0.5rem;
+    }
+    .principles-list p {
+      font-size: 1.02rem;
+      color: var(--ink);
+      line-height: 1.75;
+    }
+    .principles-list a {
+      color: var(--ocean-twilight);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .principles-list a:hover { color: var(--flame-ink); }
+
+    .subsection-heading {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+
     .approach-list {
       list-style: none;
       display: grid;
@@ -855,7 +910,7 @@
         <a href="#hero" class="nav-brand" aria-label="Noa Kim — go to top">Noa Kim</a>
         <ul class="nav-links" role="list">
           <li><a href="#projects">Work</a></li>
-          <li><a href="#approach">Approach</a></li>
+          <li><a href="#approach">Principles</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#publications">Publications</a></li>
           <li><a href="/reading/">Reading</a></li>
@@ -991,13 +1046,52 @@
     <!-- ── Approach ───────────────────────────────────────────── -->
     <section id="approach" aria-labelledby="approach-heading">
       <div class="container">
-        <p class="section-label">How I lead product</p>
+        <p class="section-label">How I work</p>
         <div class="section-rule" aria-hidden="true"></div>
-        <h2 class="section-heading" id="approach-heading">Approach</h2>
+        <h2 class="section-heading" id="approach-heading">Guiding principles</h2>
         <p class="section-intro">
-          Administrative burden is a design choice, which means it can be designed out.
-          These are the habits I bring to every team, with an example from the work.
+          Every quality measure, and every bonus paid on a claim, assumes someone has the time, energy, and power
+          to do the work behind it. Too often, they don't. My work is about closing that gap.
         </p>
+        <ol class="principles-list">
+          <li>
+            <h3>Acknowledge moral injury</h3>
+            <p>
+              In November 2026 the American Medical Association named moral injury
+              <a href="https://www.ama-assn.org/press-center/ama-press-releases/moral-injury-distinct-threat-physician-well-being" target="_blank" rel="noopener noreferrer">a distinct threat to physician well-being</a>.
+              So much of my work with Collaborative Quality Initiatives is a hand on the shoulder to say: it's not just you.
+              Privatized facilities, consolidated accountable care organizations, fragmented coverage, health misinformation,
+              a global pandemic, and economic inequality have put the career and mission clinicians set out with nearly out of reach.
+              It's frustrating, and it leaves so many people feeling powerless.
+            </p>
+          </li>
+          <li>
+            <h3>Deliver something tangible, soon</h3>
+            <p>
+              Acknowledgment has to come with action. As a designer, I ask: what can we put in your hands by next Tuesday?
+              By next quarter? By next year?
+            </p>
+          </li>
+          <li>
+            <h3>Uphold the social contract</h3>
+            <p>
+              Value-based programs assume clinicians have the time and energy to commit to outcomes-measured care, and the power
+              to change outcomes, or at least the belief that they do. When that assumption is wrong, the mission can't succeed.
+              It only works with reciprocity: we bring something to the table that helps you, you bring something that helps us,
+              and we're in this together.
+            </p>
+          </li>
+          <li>
+            <h3>Know who does the work behind every policy</h3>
+            <p>
+              Every policy, whether it defines how quality is measured or how a physician earns an extra 0.25% on a claim,
+              needs a deep understanding of the clinicians, administrators, and patients who do the actual work to reach its goal.
+              Then we can find and remove the constraints that keep them from aligning with outcomes-based measures.
+            </p>
+          </li>
+        </ol>
+
+        <h3 class="subsection-heading">In practice</h3>
         <ol class="approach-list">
           <li>
             <h3>Start with the people the system fails</h3>
