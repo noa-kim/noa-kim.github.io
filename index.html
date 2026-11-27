@@ -180,32 +180,41 @@
       animation: morph 14s ease-in-out infinite alternate-reverse;
     }
 
+    /* Bookshelf photo. Phones show the whole shelf as a band along the bottom
+       of the hero; wider screens fill the hero with the full frame. */
     .hero-bg {
       position: absolute;
       inset: 0;
       z-index: -1;
-      background-image: url('assets/img/books-1000.jpg');
-      background-image: image-set(url('assets/img/books-1000.webp') type('image/webp'), url('assets/img/books-1000.jpg') type('image/jpeg'));
-      background-size: cover;
-      background-position: center 60%;
-      filter: saturate(0.75);
-    }
-    @media (min-width: 900px) {
-      .hero-bg {
-        background-image: url('assets/img/books-2000.jpg');
-        background-image: image-set(url('assets/img/books-2000.webp') type('image/webp'), url('assets/img/books-2000.jpg') type('image/jpeg'));
-      }
+      background-image: url('assets/img/books-1200.jpg');
+      background-image: image-set(url('assets/img/books-1200.webp') type('image/webp'), url('assets/img/books-1200.jpg') type('image/jpeg'));
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-position: center bottom;
     }
     /* Parchment wash keeps hero text readable over the shelf */
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(246, 241, 235, 0.92);
+      background: linear-gradient(0deg, rgba(246, 241, 235, 0.1) 0, rgba(246, 241, 235, 0.3) 45vw, var(--parchment) 78vw);
+    }
+    @media (max-width: 899px) {
+      /* leave room under the text for the shelf band */
+      #hero { padding-bottom: calc(75vw - 2rem); }
+      #hero::after { display: none; } /* keep the small blob off the shelf */
     }
     @media (min-width: 900px) {
+      .hero-bg {
+        background-image: url('assets/img/books-2400.jpg');
+        background-image: image-set(url('assets/img/books-2400.webp') type('image/webp'), url('assets/img/books-2400.jpg') type('image/jpeg'));
+        background-size: cover;
+        background-position: center 55%;
+      }
+      /* the photo fills the hero here, so the blobs would tint the books */
+      #hero::before, #hero::after { display: none; }
       .hero-bg::after {
-        background: linear-gradient(90deg, rgba(246, 241, 235, 0.97) 0%, rgba(246, 241, 235, 0.92) 55%, rgba(246, 241, 235, 0.78) 100%);
+        background: linear-gradient(90deg, rgba(246, 241, 235, 0.94) 0%, rgba(246, 241, 235, 0.9) 50%, rgba(246, 241, 235, 0.4) 72%, rgba(246, 241, 235, 0.12) 100%);
       }
     }
 
