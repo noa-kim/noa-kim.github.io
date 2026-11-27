@@ -148,6 +148,7 @@
       align-items: center;
       overflow: hidden;
       padding-top: var(--nav-h);
+      isolation: isolate;
     }
 
     #hero::before {
@@ -170,6 +171,35 @@
       opacity: 0.35;
       clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
       animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image: url('assets/img/books-1000.jpg');
+      background-image: image-set(url('assets/img/books-1000.webp') type('image/webp'), url('assets/img/books-1000.jpg') type('image/jpeg'));
+      background-size: cover;
+      background-position: center 60%;
+      filter: saturate(0.75);
+    }
+    @media (min-width: 900px) {
+      .hero-bg {
+        background-image: url('assets/img/books-2000.jpg');
+        background-image: image-set(url('assets/img/books-2000.webp') type('image/webp'), url('assets/img/books-2000.jpg') type('image/jpeg'));
+      }
+    }
+    /* Navy wash keeps hero text readable over the shelf */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(12, 15, 32, 0.9);
+    }
+    @media (min-width: 900px) {
+      .hero-bg::after {
+        background: linear-gradient(90deg, rgba(12, 15, 32, 0.95) 0%, rgba(12, 15, 32, 0.88) 50%, rgba(12, 15, 32, 0.7) 100%);
+      }
     }
 
     .hero-geo-rect {
@@ -280,6 +310,51 @@
 
     #about .section-label { color: var(--dg-main); }
     #about .section-heading { color: var(--ot-200); margin-bottom: 2.5rem; }
+
+    /* 9–5 / 5–9 photo strip */
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .about-photo:first-child { grid-column: 1 / -1; }
+    @media (min-width: 768px) {
+      .about-photos { grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+      .about-photo:first-child { grid-column: auto; }
+    }
+    .about-photo { margin: 0; }
+    .about-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 6px;
+      background: var(--dg-900);
+    }
+    .about-photo:first-child img { aspect-ratio: 1 / 1; object-position: center 30%; }
+    @media (min-width: 768px) {
+      .about-photo:first-child img { aspect-ratio: 4 / 5; object-position: center; }
+    }
+    .about-photo .photo-bertie { object-position: 60% center; }
+    .about-photo figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--dg-300);
+      line-height: 1.5;
+    }
+    .about-photo .photo-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fo-main);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    .about-photo:first-child .photo-label { color: var(--ot-main); }
 
     .about-layout {
       display: grid;
@@ -624,6 +699,7 @@
 
     <!-- ── Hero ─────────────────────────────────────────────── -->
     <section id="hero" aria-labelledby="hero-name">
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-geo-rect" aria-hidden="true"></div>
       <div class="hero-geo-dot" aria-hidden="true"></div>
       <div class="container">
@@ -647,6 +723,32 @@
         <p class="section-label">Background</p>
         <div class="section-rule" aria-hidden="true"></div>
         <h2 class="section-heading" id="about-heading">About</h2>
+        <div class="about-photos">
+          <figure class="about-photo">
+            <picture>
+              <source srcset="assets/img/noa-kim-headshot.webp" type="image/webp">
+              <img src="assets/img/noa-kim-headshot.jpg" width="800" height="895" loading="lazy" decoding="async"
+                alt="Portrait of Noa Kim smiling, wearing round black glasses, a navy zip cardigan, and a rust-orange collared shirt against a soft lavender backdrop.">
+            </picture>
+            <figcaption><span class="photo-label">9 to 5</span>Leading product at Michigan Medicine.</figcaption>
+          </figure>
+          <figure class="about-photo">
+            <picture>
+              <source srcset="assets/img/noa-and-ziggy.webp" type="image/webp">
+              <img src="assets/img/noa-and-ziggy.jpg" width="900" height="1199" loading="lazy" decoding="async"
+                alt="Black-and-white photo of Noa at home, laughing while hugging their black cat Ziggy close to their cheek.">
+            </picture>
+            <figcaption><span class="photo-label">5 to 9</span>Home with Ziggy, chief of lap warming.</figcaption>
+          </figure>
+          <figure class="about-photo">
+            <picture>
+              <source srcset="assets/img/noa-and-bertie-oregon-coast.webp" type="image/webp">
+              <img class="photo-bertie" src="assets/img/noa-and-bertie-oregon-coast.jpg" width="1400" height="1050" loading="lazy" decoding="async"
+                alt="Noa crouches on a wide, wet Oregon beach under a big cloudy sky, taking a photo of their small black dog Bertie in a yellow harness.">
+            </picture>
+            <figcaption><span class="photo-label">5 to 9</span>Camping on the Oregon coast with Bertie.</figcaption>
+          </figure>
+        </div>
         <div class="about-layout">
           <div class="about-body">
             <p>
