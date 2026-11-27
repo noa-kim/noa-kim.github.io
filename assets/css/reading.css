@@ -5,13 +5,7 @@
    with soft organic accents (blobs, wavy section edges, squiggle rules).
    ========================================================================== */
 
-:root {
-  --blob-1: 58% 42% 63% 37% / 45% 55% 45% 55%;
-  --blob-2: 41% 59% 38% 62% / 57% 39% 61% 43%;
-  --blob-3: 63% 37% 52% 48% / 38% 62% 44% 56%;
-  --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 38 C 180 8, 360 8, 540 30 S 900 58, 1080 32 S 1320 6, 1440 26 L1440 60 L0 60Z' fill='black'/%3E%3C/svg%3E");
-  --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 14'%3E%3Cpath d='M2 9 C 10 2, 18 13, 27 7 S 44 2, 52 8 S 70 13, 78 6 S 90 4, 94 7' fill='none' stroke='%23ff4e00' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
-}
+/* Organic tokens (--blob-*, --wave, --wave-h, --squiggle) come from case-study.css */
 
 [id] { scroll-margin-top: calc(var(--nav-h) + 1rem); }
 
@@ -120,7 +114,7 @@
 .rd-shelf::before {
   content: '';
   position: absolute;
-  left: 0; right: 0; top: -59px; height: 60px;
+  left: 0; right: 0; top: calc(var(--wave-h) * -1 + 1px); height: var(--wave-h);
   pointer-events: none;
   -webkit-mask: var(--wave) no-repeat 0 0 / 100% 100%;
   mask: var(--wave) no-repeat 0 0 / 100% 100%;
@@ -285,7 +279,7 @@
 .rd-invite::before {
   content: '';
   position: absolute;
-  left: 0; right: 0; top: -59px; height: 60px;
+  left: 0; right: 0; top: calc(var(--wave-h) * -1 + 1px); height: var(--wave-h);
   pointer-events: none;
   -webkit-mask: var(--wave) no-repeat 0 0 / 100% 100%;
   mask: var(--wave) no-repeat 0 0 / 100% 100%;
