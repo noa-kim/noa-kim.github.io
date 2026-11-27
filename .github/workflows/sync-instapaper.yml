@@ -1,0 +1,39 @@
+# Refreshes the Articles list on /reading/ from Noa's public Instapaper folder.
+# Runs daily, and on demand from the Actions tab ("Run workflow").
+# GitHub Pages can't read the feed in the browser (Instapaper doesn't allow
+# cross-site requests), so this job writes the articles into the page itself.
+name: Sync Instapaper reading list
+
+on:
+  schedule:
+    - cron: "17 11 * * *"   # daily, around 6–7 AM Eastern
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-instapaper
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pull the feed into reading/index.html
+        run: python3 .github/scripts/sync_instapaper.py
+      - name: Commit if the list changed
+        run: |
+          if git diff --quiet -- reading/index.html; then
+            echo "Reading list already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add reading/index.html
+          git commit -m "Refresh saved articles from Instapaper"
+          git push

@@ -150,6 +150,17 @@
   background: var(--squiggle) no-repeat;
 }
 
+.rd-shelf-note {
+  margin-top: 1rem;
+  max-width: 14rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.rd-shelf-note a { color: var(--ocean-twilight); border-bottom: 1px solid var(--pastel-petal); }
+.rd-shelf-note a:hover { color: var(--flame-ink); }
+@media (max-width: 859px) { .rd-shelf-note { max-width: none; } }
+
 .rd-picks { list-style: none; max-width: 42rem; }
 
 /* ─── A single pick ───────────────────────────────────────── */
@@ -187,6 +198,7 @@
   color: var(--ink-soft);
   margin-bottom: 0.4rem;
 }
+.pick-meta span + span::before { content: '·'; margin-right: 0.75rem; }
 .pick.is-placeholder .pick-meta::after {
   content: 'Placeholder';
   color: var(--flame-ink);

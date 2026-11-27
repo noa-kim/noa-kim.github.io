@@ -12,6 +12,10 @@
   · To remove a pick: delete its whole <li> … </li> block.
   · Blocks marked class="pick is-placeholder" show a "Placeholder" tag.
     When you replace one with a real pick, delete "is-placeholder" from it.
+  · Articles: most come from Noa's public Instapaper folder. A GitHub
+    Action (.github/workflows/sync-instapaper.yml) rewrites the list between
+    the INSTAPAPER:START and INSTAPAPER:END markers once a day. Save or
+    remove articles in Instapaper; hand-picked ones go above the markers.
   · A section with no picks can be deleted, along with its link in the
     "On this page" list near the top.
   · To preview locally, run  python3 -m http.server  from the repo root
@@ -135,18 +139,34 @@
       <div class="container">
         <header class="rd-shelf-head">
           <h2 id="articles-heading">Articles</h2>
+          <p class="rd-shelf-note">Saved from my <a href="https://www.instapaper.com/">Instapaper</a> and refreshed daily.</p>
         </header>
         <ol class="rd-picks" role="list">
 
-          <!-- COPY ME: one article, essay or report ─────────── -->
-          <li class="pick is-placeholder">
-            <p class="pick-meta"><span class="pick-when">[Month Year]</span></p>
-            <h3 class="pick-title">[Article title]</h3>
-            <p class="pick-by">[Author] · [Publication]</p>
-            <p class="pick-note">[Why it moved you.]</p>
-            <a class="pick-link" href="[https://… link to the article]">Read</a>
+          <!-- Hand-picked articles go here, above the Instapaper list.
+               To add one, copy this block, remove the comment markers around it,
+               and fill it in:
+
+          <li class="pick">
+            <p class="pick-meta"><span class="pick-when">Month Year</span></p>
+            <h3 class="pick-title">Article title</h3>
+            <p class="pick-by">Author · Publication</p>
+            <p class="pick-note">Why it moved you.</p>
+            <a class="pick-link" href="https://…">Read</a>
           </li>
-          <!-- /COPY ME ─────────────────────────────────────── -->
+          -->
+
+          <!-- Everything between the two INSTAPAPER markers is written by the
+               "Sync Instapaper reading list" GitHub Action each day, from Noa's
+               public Instapaper folder. Edits made inside the markers will be
+               overwritten; change what's saved in Instapaper instead. -->
+          <!-- INSTAPAPER:START -->
+          <li class="pick is-placeholder">
+            <p class="pick-meta"><span>Saved on Instapaper</span></p>
+            <h3 class="pick-title">[Your Instapaper articles appear here]</h3>
+            <p class="pick-note">[The daily sync fills this list from your public Instapaper folder.]</p>
+          </li>
+          <!-- INSTAPAPER:END -->
 
         </ol>
       </div>
