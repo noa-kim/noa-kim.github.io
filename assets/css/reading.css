@@ -1,0 +1,310 @@
+/* ==========================================================================
+   What I'm Reading page
+   Loaded after case-study.css, which supplies the tokens, nav and footer.
+   Style: open editorial layout (no cards or boxes, hairlines, whitespace)
+   with soft organic accents (blobs, wavy section edges, squiggle rules).
+   ========================================================================== */
+
+/* Organic tokens (--blob-*, --wave, --wave-h, --squiggle) come from case-study.css */
+
+[id] { scroll-margin-top: calc(var(--nav-h) + 1rem); }
+
+/* ─── Nav links ───────────────────────────────────────────── */
+.rd-nav-links {
+  display: flex;
+  gap: clamp(0.9rem, 3vw, 2rem);
+  list-style: none;
+}
+.rd-nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.rd-nav-links a:hover { color: var(--flame-ink); }
+.rd-nav-links a[aria-current="page"] {
+  color: var(--ocean-twilight);
+  border-bottom: 2px solid var(--flame-orange);
+  padding-bottom: 2px;
+}
+@media (max-width: 420px) {
+  .rd-nav-links li:first-child { display: none; } /* brand link covers home */
+}
+
+/* ─── Intro ───────────────────────────────────────────────── */
+.rd-hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(var(--nav-h) + clamp(3rem, 8vw, 5.5rem));
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+.rd-hero::before,
+.rd-hero::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+.rd-hero::before {
+  top: 8%; right: -140px;
+  width: clamp(260px, 40vw, 520px); height: clamp(240px, 37vw, 480px);
+  background: var(--pastel-petal);
+  opacity: 0.5;
+  border-radius: var(--blob-1);
+  animation: rd-morph 18s ease-in-out infinite alternate;
+}
+.rd-hero::after {
+  bottom: 12%; right: clamp(8%, 22vw, 30%);
+  width: 160px; height: 145px;
+  background: var(--ocean-twilight);
+  opacity: 0.1;
+  border-radius: var(--blob-2);
+  animation: rd-morph 14s ease-in-out infinite alternate-reverse;
+}
+@media (max-width: 700px) { .rd-hero::after { display: none; } }
+@keyframes rd-morph {
+  0% { border-radius: var(--blob-1); }
+  50% { border-radius: var(--blob-2); }
+  100% { border-radius: var(--blob-3); }
+}
+.rd-hero .container { position: relative; z-index: 1; }
+.rd-hero h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 8vw, 4.5rem);
+  line-height: 1.02;
+  color: var(--ocean-deep);
+  margin-bottom: 1.75rem;
+}
+.rd-intro {
+  max-width: 38rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+  line-height: 1.7;
+}
+.rd-intro p + p { margin-top: 1rem; }
+
+.rd-jump ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  list-style: none;
+  margin-top: 2.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  max-width: 38rem;
+}
+.rd-jump a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ocean-twilight);
+}
+.rd-jump a:hover { color: var(--flame-ink); }
+
+/* ─── Shelves (one per type) ──────────────────────────────── */
+.rd-shelf {
+  position: relative;
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+/* Alternate shelf backgrounds, joined by a wavy edge */
+.rd-shelf:nth-of-type(even) { background: var(--parchment-deep); }
+.rd-shelf::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: calc(var(--wave-h) * -1 + 1px); height: var(--wave-h);
+  pointer-events: none;
+  -webkit-mask: var(--wave) no-repeat 0 0 / 100% 100%;
+  mask: var(--wave) no-repeat 0 0 / 100% 100%;
+  background: var(--parchment);
+}
+.rd-shelf:nth-of-type(even)::before { background: var(--parchment-deep); transform: scaleX(-1); }
+.rd-shelf .container {
+  display: grid;
+  gap: 1rem 3rem;
+}
+@media (min-width: 860px) {
+  .rd-shelf .container { grid-template-columns: 11rem minmax(0, 1fr); }
+  .rd-shelf-head { position: sticky; top: calc(var(--nav-h) + 1.5rem); align-self: start; }
+}
+.rd-shelf-head h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+  line-height: 1.1;
+  color: var(--ocean-twilight);
+}
+.rd-shelf-head h2::after {
+  content: '';
+  display: block;
+  width: 96px; height: 14px;
+  margin-top: 0.6rem;
+  background: var(--squiggle) no-repeat;
+}
+
+.rd-shelf-note {
+  margin-top: 1rem;
+  max-width: 14rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.rd-shelf-note a { color: var(--ocean-twilight); border-bottom: 1px solid var(--pastel-petal); }
+.rd-shelf-note a:hover { color: var(--flame-ink); }
+@media (max-width: 859px) { .rd-shelf-note { max-width: none; } }
+
+.rd-picks { list-style: none; max-width: 42rem; }
+
+/* ─── Groups inside a shelf (e.g. Goodreads feed, then hand picks) ── */
+.rd-shelf-body { min-width: 0; }
+.rd-group + .rd-group { margin-top: 2.5rem; }
+.rd-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--flame-ink);
+  margin-bottom: 1rem;
+}
+.rd-group-label a { color: var(--ocean-twilight); border-bottom: 1px solid var(--pastel-petal); }
+.rd-group-label a:hover { color: var(--flame-ink); }
+/* An empty Goodreads shelf hides its group */
+.rd-group--feed:not(:has(.pick)) { display: none; }
+
+/* Book with a cover: small cover beside the text, no frame */
+.pick--book:has(.pick-cover) {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  column-gap: 1.25rem;
+  align-items: start;
+}
+.pick--book:has(.pick-cover) > :not(.pick-cover) { grid-column: 2; justify-self: start; }
+.pick-cover {
+  grid-column: 1;
+  grid-row: 1 / span 6;
+  width: 64px;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 2px 4px 4px 2px;
+  box-shadow: 0 6px 16px rgba(74, 67, 53, 0.18);
+}
+.pick--book:has(.pick-cover)::before { display: none; }
+.pick--book:has(.pick-cover) { padding-left: 0; }
+
+/* ─── A single pick ───────────────────────────────────────── */
+.pick {
+  position: relative;
+  padding-block: 1.5rem;
+  padding-left: 2rem;
+  border-top: 1px solid var(--line);
+}
+/* Small blob marker beside each pick */
+.pick::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1.6rem;
+  width: 16px; height: 14px;
+  background: var(--pastel-petal);
+  border-radius: var(--blob-2);
+  transition: background 0.2s;
+}
+.pick:first-child::before { top: 0.35rem; }
+.pick:nth-child(3n+2)::before { background: #c7cbe8; border-radius: var(--blob-1); }
+.pick:nth-child(3n)::before { background: #ffc7ad; border-radius: var(--blob-3); }
+.pick:hover::before { background: var(--flame-orange); }
+.pick:first-child { border-top: 0; padding-top: 0.25rem; }
+@media (min-width: 860px) { .pick:first-child { padding-top: 0.4rem; } }
+
+.pick-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+.pick-meta span { white-space: nowrap; }
+.pick-meta span + span::before { content: '·'; margin-right: 0.75rem; }
+.pick.is-placeholder .pick-meta::after {
+  content: 'Placeholder';
+  color: var(--flame-ink);
+}
+.pick-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 3vw, 1.6rem);
+  line-height: 1.2;
+  color: var(--ocean-deep);
+}
+.pick-by {
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+.pick-note {
+  margin-top: 0.75rem;
+  line-height: 1.7;
+}
+.pick-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ocean-twilight);
+  border-bottom: 1px solid var(--pastel-petal);
+  transition: color 0.2s, border-color 0.2s;
+}
+.pick-link::after { content: ' →'; }
+.pick-link:hover { color: var(--flame-ink); border-bottom-color: var(--flame-orange); }
+
+/* Placeholders read as drafts: muted text and a dashed rule */
+.pick.is-placeholder { border-top-style: dashed; border-top-color: var(--line-strong); }
+.pick.is-placeholder:first-child { border-top: 0; }
+.pick.is-placeholder .pick-title,
+.pick.is-placeholder .pick-note { color: var(--ink-soft); }
+
+/* ─── Closing invitation ──────────────────────────────────── */
+.rd-invite {
+  position: relative;
+  padding-block: clamp(3rem, 7vw, 5rem);
+  background: var(--petal-tint);
+}
+.rd-invite::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: calc(var(--wave-h) * -1 + 1px); height: var(--wave-h);
+  pointer-events: none;
+  -webkit-mask: var(--wave) no-repeat 0 0 / 100% 100%;
+  mask: var(--wave) no-repeat 0 0 / 100% 100%;
+  background: var(--petal-tint);
+}
+.rd-invite h2 {
+  display: inline;
+  background: linear-gradient(transparent 58%, #f3d3dc 58%, #f3d3dc 88%, transparent 88%);
+  padding: 0 0.2em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.rd-invite p { margin-top: 0.9rem; }
+@media (prefers-reduced-motion: reduce) {
+  .rd-hero::before, .rd-hero::after { animation: none; }
+}
+.rd-invite h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--ocean-deep);
+  margin-bottom: 0.5rem;
+}
+.rd-invite a {
+  color: var(--ocean-twilight);
+  border-bottom: 1px solid var(--pastel-petal);
+}
+.rd-invite a:hover { color: var(--flame-ink); border-bottom-color: var(--flame-orange); }
