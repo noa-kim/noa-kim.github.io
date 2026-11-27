@@ -15,7 +15,8 @@
   · Two lists fill themselves once a day from Noa's public feeds, via the
     GitHub Action in .github/workflows/sync-reading-feeds.yml:
       Books → "On my nightstand" from the Goodreads currently-reading shelf
-              (between the GOODREADS:START and GOODREADS:END markers)
+              (between the GOODREADS markers). PAUSED: Goodreads ended public
+              RSS; see the note in the Books section to restore it.
       Articles → the public Instapaper folder
               (between the INSTAPAPER:START and INSTAPAPER:END markers)
     Don't edit inside the markers; change the shelf or folder instead.
@@ -91,12 +92,18 @@
         </header>
         <div class="rd-shelf-body">
 
-        <!-- Currently reading: everything between the two GOODREADS markers is
+        <!-- PAUSED (Nov 2026): Goodreads ended public RSS feeds, so this group is
+             hidden and the sync skips it. To bring it back, delete the word
+             "hidden" from the div below and set GOODREADS_ENABLED = True in
+             .github/scripts/sync_reading_feeds.py (and update GOODREADS_URL
+             if Goodreads offers a new feed).
+
+             Currently reading: everything between the two GOODREADS markers is
              written by the "Sync reading feeds" GitHub Action each day, from
              Noa's public Goodreads "currently reading" shelf. Edits inside the
              markers will be overwritten; update the shelf on Goodreads instead.
              When the shelf is empty, this group hides itself. -->
-        <div class="rd-group rd-group--feed">
+        <div class="rd-group rd-group--feed" hidden>
           <p class="rd-group-label">On my nightstand · <a href="https://www.goodreads.com/review/list/1278912?shelf=currently-reading">via Goodreads</a></p>
           <ol class="rd-picks" role="list">
           <!-- GOODREADS:START -->

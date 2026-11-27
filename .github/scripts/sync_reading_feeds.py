@@ -25,6 +25,10 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+# Goodreads ended public RSS feeds in Nov 2026, so this source is paused and the
+# "On my nightstand" group on the page is hidden. To restore: set this to True,
+# update GOODREADS_URL if needed, and remove `hidden` from that group's div.
+GOODREADS_ENABLED = False
 GOODREADS_URL = "https://www.goodreads.com/review/list_rss/1278912?shelf=currently-reading"
 INSTAPAPER_URL = "https://instapaper.com/rss/folder/4965738/872230/wUmh3decxsV6HcPwhrmPo5jvlx4"
 
@@ -162,7 +166,11 @@ def main():
     page = original = PAGE.read_text(encoding="utf-8")
     # An empty "currently reading" shelf is real (between books), so allow it;
     # the page hides the group when the list is empty.
-    page, ok_gr = sync(page, "GOODREADS", args.goodreads, render_book, MAX_BOOKS, allow_empty=True)
+    if GOODREADS_ENABLED:
+        page, ok_gr = sync(page, "GOODREADS", args.goodreads, render_book, MAX_BOOKS, allow_empty=True)
+    else:
+        print("GOODREADS: paused (see GOODREADS_ENABLED)")
+        ok_gr = False
     page, ok_ip = sync(page, "INSTAPAPER", args.instapaper, render_article, MAX_ARTICLES, allow_empty=False)
 
     if page != original:
@@ -171,7 +179,7 @@ def main():
     else:
         print("No changes.")
     if not (ok_gr or ok_ip):
-        sys.exit("Both feeds failed.")
+        sys.exit("No feed could be read.")
 
 
 if __name__ == "__main__":
