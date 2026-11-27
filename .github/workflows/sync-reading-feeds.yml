@@ -1,5 +1,6 @@
 # Refreshes /reading/ from Noa's public feeds:
-#   · Goodreads "currently reading" shelf → Books
+#   · Goodreads "currently reading" shelf → Books  (PAUSED: Goodreads ended
+#     public RSS; re-enable with GOODREADS_ENABLED in the script)
 #   · Instapaper public folder            → Articles
 # Runs daily, and on demand from the Actions tab ("Run workflow").
 # GitHub Pages can't read these feeds in the visitor's browser (the sites
